@@ -21,7 +21,7 @@ Name: JulianAndAlexander
   <tr>
     <td>**Task**</td>
     <td>**Team Member**</td>
-    <td>**Date**</td>
+    <td>__Date__</td>
   </tr>
   <tr>
     <td>Rough draft of the Class UML diagram</td>
