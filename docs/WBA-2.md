@@ -1,4 +1,4 @@
-**Work Balance Agreement (WBA)**
+# **Work Balance Agreement (WBA)**
 
 *FIT2099 S1 2019*
 
@@ -12,9 +12,10 @@ Members:
 
 * Julian Cannuli (27821706)
 
-**Tasks:**
 
-*Note:** As of the submission of this assignment, the due date for Assignment 2 has not yet been released. As a result, tasks in Assignment 2 will not have a date given to them.*
+**Tasks:**
+
+*Note:* *As of the submission of this assignment, the due date for Assignment 2 has not yet been released. As a result, tasks in Assignment 2 will not have a date given to them.*
 
 <table>
   <tr>
