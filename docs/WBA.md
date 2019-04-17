@@ -1,27 +1,26 @@
-# **Work Balance Agreement (WBA)**
+**Work Balance Agreement (WBA)**
 
 *FIT2099 S1 2019*
 
-## **Team:**
+**Team:**
 
 Name: JulianAndAlexander
 
-### Members:
+Members:
 
 * Alexander John Occhipinti (29994705)
 
 * Julian Cannuli (27821706)
 
+**Tasks:**
 
-## **Tasks:**
-
-*Note:* *As of the submission of this assignment, the due date for Assignment 2 has not yet been released. As a result, tasks in Assignment 2 will not have a date given to them.*
+*Note:** As of the submission of this assignment, the due date for Assignment 2 has not yet been released. As a result, tasks in Assignment 2 will not have a date given to them.*
 
 <table>
   <tr>
-    <td>**Task**</td>
-    <td>**Team Member**</td>
-    <td>**Date**</td>
+    <td>Task</td>
+    <td>Team Member</td>
+    <td>Date</td>
   </tr>
   <tr>
     <td>Rough draft of the Class UML diagram</td>
@@ -104,7 +103,7 @@ Name: JulianAndAlexander
     <td>18th March</td>
   </tr>
   <tr>
-    <td>**Assignment 1 Submission via GitLab by [23:55 Thursday 18th of March]**</td>
+    <td>Assignment 1 Submission via GitLab 23:55 Thursday 18th of March</td>
     <td></td>
     <td></td>
   </tr>
@@ -134,7 +133,7 @@ Name: JulianAndAlexander
     <td>TBA</td>
   </tr>
   <tr>
-    <td>Test the Ninja, ensuring that guidelines are adhered to exactly</td>
+    <td>Test the Ninja, ensuring that guidelines are adheared to exactly</td>
     <td>Julian</td>
     <td>TBA</td>
   </tr>
@@ -154,12 +153,12 @@ Name: JulianAndAlexander
     <td>TBA</td>
   </tr>
   <tr>
-    <td>Test Q, ensuring that guidelines are adhered to exactly</td>
+    <td>Test Q, ensuring that guidelines are adheared to exactly</td>
     <td>Alex</td>
     <td>TBA</td>
   </tr>
   <tr>
-    <td>Review and test Q locally. Double check guidelines are adhered to</td>
+    <td>Review and test Q locally. Double check guidelines are adheared to</td>
     <td>Julian</td>
     <td>TBA</td>
   </tr>
@@ -194,7 +193,7 @@ Name: JulianAndAlexander
     <td>TBA</td>
   </tr>
   <tr>
-    <td>Test Doctor Maybe, ensuring that guidelines are adhered to exactly</td>
+    <td>Test Doctor Maybe, ensuring that guidelines are adheared to exactly</td>
     <td>Julian</td>
     <td>TBA</td>
   </tr>
@@ -224,7 +223,7 @@ Name: JulianAndAlexander
     <td>TBA</td>
   </tr>
   <tr>
-    <td>Resolve issues found after play-through, if any</td>
+    <td>Resolve issues found after playthrough, if any</td>
     <td>Alex, Julian</td>
     <td>TBA</td>
   </tr>
@@ -239,8 +238,10 @@ Name: JulianAndAlexander
     <td>TBA</td>
   </tr>
   <tr>
-    <td>**Assignment 2 Submission via GitLab by [Unknown Date]**</td>
+    <td>Assignment 1 Submission via GitLab <<unknown due date>></td>
     <td></td>
     <td></td>
   </tr>
 </table>
+
+
