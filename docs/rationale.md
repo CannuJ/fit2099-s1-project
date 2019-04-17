@@ -37,12 +37,27 @@ The rocket is built by the player as the game progresses. The first goal of the 
 
 ### Keys
 **Class:** `Key` extends `Item`<br>
+Keys are `Items` which are associated with a specific instance of `Door`. As a result, they can not be created without refering to a door. The job of keys are to allow the `Player` to "unlock" a specific door, allowing them to pass/walk through it.<br>
+
+Keys are:
+- applicable to only one specific `Door`
+- passivly used when passing through a door: as in;  do not an `Action` from the player
+- not consumed when used
+
+In order for keys to tie information about which door they are unlocking, they require to be thier own subclass of `Item`.
 <br>
 ## Places on the map
 
 ### Rocket Plan Room
-**Behind a locked `Door`**
+**Behind a locked `Door`**<br>
+A place on the `GameMap` which is surrounded by walls (`Ground`) which can only be accessed by unlocking a `Door` with a `Key`. This feature is not a class but rather a collection of game objects arranged on the `GameMap`.
+
+Inside this room is the rocket plans item described above.
 ### Doctor Maybe's Room
-** Behind a locked `Door`**
+**Behind a locked `Door`**<br>
+A place on the `GameMap` which is surrounded by walls (`Ground`) which can only be accessed by unlocking a `Door` with a `Key`. This feature is not a class but rather a collection of game objects arranged on the `GameMap`.
+
+Inside this room is the `DrMaybe` miniboss. The player must fight Dr Maybe (not much of a fight since he is stationary and weak) in order to gain the rocket engine. This fight takes place in this room.
 ### Rocket Pad
 **Instance of `Location`** <br>
+The rocket pad is a `Location` placed inside a locked room (as described many times above) on which the rocket items will be placed upon to complete the game. The rocket pad will be one tile inside the room and therefore should be represented by a `Location` class.
