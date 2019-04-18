@@ -12,9 +12,10 @@ Members:
 
 * Julian Cannuli (27821706)
 
-**Tasks:**
 
-*Note:** As of the submission of this assignment, the due date for Assignment 2 has not yet been released. As a result, tasks in Assignment 2 will not have a date given to them.*
+**Tasks:**
+
+**Note:** As of the submission of this assignment, the due date for Assignment 2 has not yet been released. As a result, tasks in Assignment 2 will not have a date given to them.*
 
 <table>
   <tr>
@@ -238,7 +239,7 @@ Members:
     <td>TBA</td>
   </tr>
   <tr>
-    <td>Assignment 1 Submission via GitLab <<unknown due date>></td>
+    <td>Assignment 2 Submission via GitLab [unknown due date]</td>
     <td></td>
     <td></td>
   </tr>
