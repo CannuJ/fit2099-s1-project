@@ -3,11 +3,31 @@ _Team: JulianAndAlex_
 
 #### Team Members:
 - Alexander John Occhipinti (29994705)
-- <julian's info goes here>
+- Julian Cannuli (27821706)
 
 ## Actors
+
+**Class:** `Actor`<br>
+An `Actor` represents any character present in the world.
+
 ### Enemies
+
+**Class:** `Enemy` extends `Actor`<br>
+An `Enemy` serves as an obstacle that must be defeated in order for the `Player` to continue on their adventure.<br>
+
+The `Player` will be the target of an `Enemy`, who's goal is to inflict damage or hinder the `Player` on their journey, where through inflicting damage, or acting as a physical obstacle.<br>
+
+**Instances of 'Enemy'** <br>
+### Grunt
+
+### Goon
+**Subclass:** `Goon` extends `Grunt`<br>
+
+
+### Ninja
+
 ### Miniboss: Doctor Maybe
+
 ### Q (NPC)
 <br>
 
@@ -37,14 +57,14 @@ The rocket is built by the player as the game progresses. The first goal of the 
 
 ### Keys
 **Class:** `Key` extends `Item`<br>
-Keys are `Items` which are associated with a specific instance of `Door`. As a result, they can not be created without refering to a door. The job of keys are to allow the `Player` to "unlock" a specific door, allowing them to pass/walk through it.<br>
+Keys are `Items` which are associated with a specific instance of `Door`. As a result, they can not be created without referring to a door. The job of keys are to allow the `Player` to "unlock" a specific door, allowing them to pass/walk through it.<br>
 
 Keys are:
 - applicable to only one specific `Door`
-- passivly used when passing through a door: as in;  do not an `Action` from the player
+- passively used when passing through a door: as in;  do not an `Action` from the player
 - not consumed when used
 
-In order for keys to tie information about which door they are unlocking, they require to be thier own subclass of `Item`.
+In order for keys to tie information about which door they are unlocking, they require to be their own subclass of `Item`.
 <br>
 ## Places on the map
 
