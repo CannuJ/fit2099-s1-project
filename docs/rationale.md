@@ -18,18 +18,42 @@ An `Enemy` serves as an obstacle that must be defeated in order for the `Player`
 The `Player` will be the target of an `Enemy`, who's goal is to inflict damage or hinder the `Player` on their journey, where through inflicting damage, or acting as a physical obstacle.<br>
 
 **Instances of 'Enemy'** <br>
+
 ### Grunt
+A `Grunt` will follow the `Player` around and 'slap' them, inflicting damage.<br>
+
+This class will serve as the main class containing Goons, and Dr. Maybe.<br>
 
 ### Goon
 **Subclass:** `Goon` extends `Grunt`<br>
+Goons will follow the `Player` around and deal double the amount of damage inflicted by a `Grunt`.<br>
 
+There is also a 10% chance they will shout an insult at the `Player`.<br>
+
+For the most part, this means that Grunts will act just as a `Grunt` except with the additions mentioned above.<br>
 
 ### Ninja
+A `Ninja` works differently to other units in that is does no deal damage to the `Player` but rather inhibits movement through the use of stun powder.<br>
+
+The `Ninja` will not move unless it is within 5 squares of the `Player`, in which it will either move one space away from the `Player`, or attempt to stun them by throwing a **Bag of Stun Powder** (See below - TBD).<br>
+
+**Bag of Stun Powder**
+A consumable item that has a 50% chance of stunning it's target.<br>
 
 ### Miniboss: Doctor Maybe
+**Subclass:** `DrMaybe` extends `Grunt`<br>
+Dr. Maybe has half the hit-points of a `Grunt` and deals half the damage of a `Grunt`.<br>
+
+Furthermore, Dr.Maybe does not move.<br>
+
+Located in a locked room, and will drop the **Rocket engine** (See below) upon being defeated. <br>
 
 ### Q (NPC)
-<br>
+`Q`, unlike the rest of the actor subclasses mentioned above, is a friendly NPC.<br>
+
+`Q` will supply the `Player` with **Rocket body** in exchange for the **Rocket plans** (See below).<br>
+
+`Q` will randomly roam the map (TBD on implementation).<br>
 
 ## Doors
 
