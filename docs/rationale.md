@@ -35,10 +35,7 @@ For the most part, this means that Grunts will act just as a `Grunt` except with
 ### Ninja
 A `Ninja` works differently to other units in that is does no deal damage to the `Player` but rather inhibits movement through the use of stun powder.<br>
 
-The `Ninja` will not move unless it is within 5 squares of the `Player`, in which it will either move one space away from the `Player`, or attempt to stun them by throwing a **Bag of Stun Powder** (See below - TBD).<br>
-
-**Bag of Stun Powder**
-A consumable item that has a 50% chance of stunning it's target.<br>
+The `Ninja` will not move unless it is within 5 squares of the `Player`, in which it will either move one space away from the `Player`, or attempt to stun them by throwing a Bag of Stun Powder.<br>
 
 ### Miniboss: Doctor Maybe
 **Class:** `DrMaybe` inherits from `Grunt`<br>
