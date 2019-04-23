@@ -12,7 +12,7 @@ An `Actor` represents any character present in the world.
 
 ### Enemies
 
-**Class:** `Enemy` extends `Actor`<br>
+**Class:** `Enemy` inherits from `Actor`<br>
 An `Enemy` serves as an obstacle that must be defeated in order for the `Player` to continue on their adventure.<br>
 
 The `Player` will be the target of an `Enemy`, who's goal is to inflict damage or hinder the `Player` on their journey, where through inflicting damage, or acting as a physical obstacle.<br>
@@ -25,7 +25,7 @@ A `Grunt` will follow the `Player` around and 'slap' them, inflicting damage.<br
 This class will serve as the main class containing Goons, and Dr. Maybe.<br>
 
 ### Goon
-**Subclass:** `Goon` extends `Grunt`<br>
+**Class:** `Goon` inherits from `Grunt`<br>
 Goons will follow the `Player` around and deal double the amount of damage inflicted by a `Grunt`.<br>
 
 There is also a 10% chance they will shout an insult at the `Player`.<br>
@@ -41,7 +41,7 @@ The `Ninja` will not move unless it is within 5 squares of the `Player`, in whic
 A consumable item that has a 50% chance of stunning it's target.<br>
 
 ### Miniboss: Doctor Maybe
-**Subclass:** `DrMaybe` extends `Grunt`<br>
+**Class:** `DrMaybe` inherits from `Grunt`<br>
 Dr. Maybe has half the hit-points of a `Grunt` and deals half the damage of a `Grunt`.<br>
 
 Furthermore, Dr.Maybe does not move.<br>
@@ -57,7 +57,7 @@ Located in a locked room, and will drop the **Rocket engine** (See below) upon b
 
 ## Doors
 
-**Class:** `Door` extends `Ground`<br>
+**Class:** `Door` inherits from `Ground`<br>
 Doors intend to separate the `Player` between `Locations` on the map (`GameMap`) unless the Player is holding the right `Key`. _(subclass of `Item` explained later in the Items subsection)_.<br>
 
 A `Door` acts as a normal wall (`Ground`) in all circumstances until the player approaches the door attempting to walk through it. If the corresponding `Key` in the player's inventory, the door will allow the player to walk through it. Going through the door does not require an action or consume the `Key`.<br>
@@ -80,7 +80,7 @@ The rocket is built by the player as the game progresses. The first goal of the 
   The second item required to complete the game as described above.
 
 ### Keys
-**Class:** `Key` extends `Item`<br>
+**Class:** `Key` inherits from `Item`<br>
 Keys are `Items` which are associated with a specific instance of `Door`. As a result, they can not be created without referring to a door. The job of keys are to allow the `Player` to "unlock" a specific door, allowing them to pass/walk through it.<br>
 
 Keys are:
