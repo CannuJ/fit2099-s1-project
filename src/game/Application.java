@@ -40,6 +40,10 @@ public class Application {
 		gameMap.addActor(grunt, 0, 0);
 		Grunt grunt2 = new Grunt("Norbert", player);
 		gameMap.addActor(grunt2,  10, 10);
+		
+		// Testing Implementation of Goon
+		Goon goon = new Goon("Gooney", player);
+		gameMap.addActor(goon, 5, 5);
 			
 		world.run();
 	}

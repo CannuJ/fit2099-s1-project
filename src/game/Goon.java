@@ -1,16 +1,19 @@
 package game;
 
+import edu.monash.fit2099.engine.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.monash.fit2099.engine.*;
 
-
-
-public class Goon extends Grunt{
-	// Goon have 50 hitpoints and are always represented with a g
+// Would rather extend from Grunt... (Is this possible?)
+public class Goon extends Actor{
+	
+	// Goon have 50 hitpoints and are always represented with a n
+	// TODO Change display letter (Currently set to 'n')
+	// Priority higher for testing purposes (5->8)
 	public Goon(String name, Actor player) {
-		super(name, player);
+		super(name, 'n', 8, 50);
 		addBehaviour(new FollowBehaviour(player));
 	}
 

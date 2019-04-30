@@ -26,6 +26,14 @@ public class AttackAction extends Action {
 		}
 
 		int damage = weapon.damage();
+		
+		//TODO Implement check for Goon and double damage if True
+		// Currently checking displayChar
+		// How do we check Subclass...
+		if (actor.displayChar == 'n') {
+			damage = (damage * 2);
+		}
+			
 		String result = actor + " " + weapon.verb() + " " + subject + " for " + damage + " damage.";
 
 		subject.hurt(damage);
