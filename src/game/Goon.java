@@ -13,7 +13,7 @@ public class Goon extends Actor{
 	// TODO Change display letter (Currently set to 'n')
 	// Priority higher for testing purposes (5->8)
 	public Goon(String name, Actor player) {
-		super(name, 'n', 8, 50);
+		super(name, 'n', 5, 50);
 		addBehaviour(new FollowBehaviour(player));
 	}
 
@@ -33,6 +33,12 @@ public class Goon extends Actor{
 		}
 		
 		return super.playTurn(actions,  map,  display);
+	}
+	
+	// Goon deals double damage so override IntrinsicWeapon from 5->10
+	@Override
+	protected IntrinsicWeapon getIntrinsicWeapon() {
+		return new IntrinsicWeapon(10, "punches");
 	}
 }
 

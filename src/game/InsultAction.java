@@ -17,7 +17,7 @@ public class InsultAction extends Action {
 		this.insVal = new Random().nextInt(5); // Random Integer between 0-4
 	}
 	
-	String[] insultArray = new String[]{"You suck!", "Haha!", "Lol!", "Try again!", "You're lame!"}; 
+	String[] insultArray = new String[]{"You suck!", "Haha!", "Lol!", "Try again!", "You're too slow!"}; 
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
