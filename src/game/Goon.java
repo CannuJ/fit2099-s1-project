@@ -11,10 +11,11 @@ public class Goon extends Actor{
 	
 	// Goon have 50 hitpoints and are always represented with a n
 	// TODO Change display letter (Currently set to 'n')
-	// Priority higher for testing purposes (5->8)
+	// Priority higher for testing purposes (5->5)
 	public Goon(String name, Actor player) {
 		super(name, 'n', 5, 50);
 		addBehaviour(new FollowBehaviour(player));
+		addBehaviour(new InsultAction(player));
 	}
 
 	private List<ActionFactory> actionFactories = new ArrayList<ActionFactory>();
