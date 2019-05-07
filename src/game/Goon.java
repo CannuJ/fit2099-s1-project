@@ -29,7 +29,6 @@ public class Goon extends Actor{
 		for (ActionFactory factory : actionFactories) {
 			Action action = factory.getAction(this, map);
 			if(action != null)
-				//TODO Check if action is an AttackAction and change damage
 				return action;
 		}
 		

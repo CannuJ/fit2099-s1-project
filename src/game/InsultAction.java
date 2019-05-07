@@ -20,11 +20,10 @@ public class InsultAction implements ActionFactory {
 		String insult = insultArray[insVal];
 		int chance = new Random().nextInt(9); // Random Integer between 0-9
 		
-		if (chance == 9) { // 10% Chance?
-			return null;
+		if (chance > 4) { // Currently not set to 10% for testing (About 50%)
+			return new SpeechAction(insultArray[insVal]);
 		}
 		 
-		
 		return null;
 	}
 
