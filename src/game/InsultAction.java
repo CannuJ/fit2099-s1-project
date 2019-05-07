@@ -1,14 +1,13 @@
 package game;
 
-import edu.monash.fit2099.engine.Action;
-import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.GameMap;
+import edu.monash.fit2099.engine.*;
 import java.util.*;
 
 public class InsultAction implements ActionFactory {
 
 	private Actor target;
 	private int insVal;
+	private String[] insultArray = new String[]{"You suck!", "Haha!", "Lol!", "Try again!", "You're too slow!"};
 
 	public InsultAction(Actor subject) {
 		this.target = subject;
@@ -18,7 +17,13 @@ public class InsultAction implements ActionFactory {
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		
-		String[] insultArray = new String[]{"You suck!", "Haha!", "Lol!", "Try again!", "You're too slow!"}; 
+		String insult = insultArray[insVal];
+		int chance = new Random().nextInt(9); // Random Integer between 0-9
+		
+		if (chance == 9) { // 10% Chance?
+			return null;
+		}
+		 
 		
 		return null;
 	}
