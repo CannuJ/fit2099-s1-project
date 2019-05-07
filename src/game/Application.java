@@ -46,10 +46,12 @@ public class Application {
 		// Will move to appropriate locations later
 		Item rocketPlans = new Item("Rocket Plans", 'P');
 		gameMap.addItem(rocketPlans, 8, 8);
-		Item rocketEngine = new Item("Rocket Engine", 'E');
-		gameMap.addItem(rocketEngine, 8, 9);
-		Item rocketBody = new Item("Rocket Body", 'B');
-		gameMap.addItem(rocketBody, 10, 8);
+//		Item rocketEngine = new Item("Rocket Engine", 'E');
+//		gameMap.addItem(rocketEngine, 8, 9);
+//		Item rocketBody = new Item("Rocket Body", 'B');
+//		gameMap.addItem(rocketBody, 10, 8);
+		NpcQ npcQ = new NpcQ("Q", player);
+		gameMap.addActor(npcQ, 9, 10);
 		
 		// Testing Implementation of Goon
 		Goon goon = new Goon("Gooney", player);
