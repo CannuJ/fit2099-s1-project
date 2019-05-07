@@ -13,7 +13,7 @@ public class Goon extends Actor{
 	// TODO Change display letter (Currently set to 'n')
 	// Priority higher for testing purposes (5->5)
 	public Goon(String name, Actor player) {
-		super(name, 'n', 5, 50);
+		super(name, 'G', 5, 50);
 		addBehaviour(new FollowBehaviour(player));
 		addBehaviour(new InsultAction(player));
 	}
