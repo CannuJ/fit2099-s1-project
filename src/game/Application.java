@@ -56,6 +56,10 @@ public class Application {
 		// Testing Implementation of Goon
 		Goon goon = new Goon("Gooney", player);
 		gameMap.addActor(goon, 5, 5);
+		
+		//Testing Implementation of Ninja
+		Ninja ninja = new Ninja("Greninja", player);
+		gameMap.addActor(ninja, 10, 6);
 			
 		world.run();
 	}
