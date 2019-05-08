@@ -51,7 +51,7 @@ public class Application {
 //		Item rocketBody = new Item("Rocket Body", 'B');
 //		gameMap.addItem(rocketBody, 10, 8);
 		NpcQ npcQ = new NpcQ("Q", player);
-		gameMap.addActor(npcQ, 9, 10);
+		gameMap.addActor(npcQ, 4, 4);
 		
 		// Testing Implementation of Goon
 		Goon goon = new Goon("Gooney", player);
