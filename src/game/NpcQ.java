@@ -38,9 +38,14 @@ public class NpcQ extends Actor implements Talkable{
 
 	@Override
 	public Action playTurn(Actions actions, GameMap map, Display display) {
-		for (Action action : actions) {
-			if (!(action instanceof MoveActorAction || action instanceof SkipTurnAction)) {
-				actions.remove(action);
+		if (actorHasPlans(this)) {
+			actions.clear();
+			actions.add(new SuicideAction(this, map));
+		} else {
+			for (Action action : actions) {
+				if (!(action instanceof MoveActorAction || action instanceof SkipTurnAction)) {
+					actions.remove(action);
+				}
 			}
 		}
 		return super.playTurn(actions,  map,  display);
