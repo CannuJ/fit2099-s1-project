@@ -45,7 +45,7 @@ public class Application {
 		// Testing Rocket Plans, Engine and Body
 		// Will move to appropriate locations later
 		Item rocketPlans = new Item("Rocket Plans", 'P');
-		gameMap.addItem(rocketPlans, 8, 8);
+		gameMap.addItem(rocketPlans, 2, 3);
 //		Item rocketEngine = new Item("Rocket Engine", 'E');
 //		gameMap.addItem(rocketEngine, 8, 9);
 //		Item rocketBody = new Item("Rocket Body", 'B');

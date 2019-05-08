@@ -51,10 +51,10 @@ public class NpcQ extends Actor implements Talkable{
 	public String talk() {
 		for (Item item : player.getInventory()) {
 			if (item.toString().equals("Rocket Plans")) {
-				return speechNoPlans;
+				return speechWithPlans;
 			}
 		}
-		return speechWithPlans;
+		return speechNoPlans;
 	}
 }
 
