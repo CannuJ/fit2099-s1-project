@@ -12,18 +12,20 @@ public class Ninja extends Actor{
 	// Priority higher for testing purposes (5->5)
 	public Ninja(String name, Actor player) {
 		super(name, 'N', 5, 50);
-		// No FollowBehaviour
-		// TODO: Implement MoveAway if within 5 spaces from Player
+		addBehaviour(new MoveAway(player));
 		// TODO: StunBag
 	}
 
 	private List<ActionFactory> actionFactories = new ArrayList<ActionFactory>();
 
 	private void addBehaviour(ActionFactory behaviour) {
+		actionFactories.add(behaviour);
 	}
 
 	@Override
 	public Action playTurn(Actions actions, GameMap map, Display display) {
+		actions.clear(); // Needs some action in the actions group
+		actions.add(new SkipTurnAction()); // I don't like this
 		for (ActionFactory factory : actionFactories) {
 			Action action = factory.getAction(this, map);
 			if(action != null)
@@ -32,7 +34,6 @@ public class Ninja extends Actor{
 		
 		return super.playTurn(actions,  map,  display);
 	}
-	
 	// TODO: StunBag Override?
 }
 

@@ -11,12 +11,12 @@ public class InsultAction implements ActionFactory {
 
 	public InsultAction(Actor subject) {
 		this.target = subject;
-		this.insVal = new Random().nextInt(5); // Random Integer between 0-4
 	}
 	
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		
+		this.insVal = new Random().nextInt(5); // Random Integer between 0-4
 		String insult = insultArray[insVal];
 		int chance = new Random().nextInt(9); // Random Integer between 0-9
 		
