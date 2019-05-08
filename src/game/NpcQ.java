@@ -50,7 +50,7 @@ public class NpcQ extends Actor implements Talkable{
 	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
 		Actions actions = new Actions();
 		if (!inventory.isEmpty() && actorHasPlans(otherActor)) {
-			actions.add(new GiveAction(this, otherActor, inventory.get(0)));
+			actions.add(new SwapItemAction(this, otherActor, inventory.get(0), otherActor.getInventory().get(0)));
 		}
 		actions.add(new TalkToAction(this));
 		return actions;
