@@ -42,7 +42,7 @@ public class SpeechAction extends Action {
 	 * @return a description of the Action suitable for the menu
 	 */
 	@Override
-	public String execute(Actor actor, GameMap map) {
+	public String execute(Actor actor, GameMap mapactor) {
 		return menuDescription(actor);
 	}
 
@@ -55,9 +55,9 @@ public class SpeechAction extends Action {
 	@Override
 	public String menuDescription(Actor actor) {
 		if (target != null) {
-			return actor + " says: " + text + " to you";
+			return actor + " says: \"" + text + "\" to you";
 		}
-		return actor + " says: " + text;
+		return actor + " says: \"" + text + "\"";
 	}
 
 	@Override
