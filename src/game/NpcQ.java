@@ -26,11 +26,20 @@ public class NpcQ extends Actor implements Talkable{
 		this.addItemToInventory(rocketPlans);
 
 	}
+	
+	private static boolean actorHasPlans(Actor actor) {
+		for (Item item : actor.getInventory()) {
+			if (item.toString().equals("Rocket Plans")) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	@Override
 	public Action playTurn(Actions actions, GameMap map, Display display) {
 		for (Action action : actions) {
-			if (!(action instanceof MoveActorAction)) {
+			if (!(action instanceof MoveActorAction || action instanceof SkipTurnAction)) {
 				actions.remove(action);
 			}
 		}
@@ -40,7 +49,7 @@ public class NpcQ extends Actor implements Talkable{
 	@Override
 	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
 		Actions actions = new Actions();
-		if (!inventory.isEmpty()) {
+		if (!inventory.isEmpty() && actorHasPlans(otherActor)) {
 			actions.add(new GiveAction(this, otherActor, inventory.get(0)));
 		}
 		actions.add(new TalkToAction(this));
@@ -49,12 +58,7 @@ public class NpcQ extends Actor implements Talkable{
 
 	@Override
 	public String talk() {
-		for (Item item : player.getInventory()) {
-			if (item.toString().equals("Rocket Plans")) {
-				return speechWithPlans;
-			}
-		}
-		return speechNoPlans;
+		return (actorHasPlans(player)) ? speechWithPlans : speechNoPlans;
 	}
 }
 

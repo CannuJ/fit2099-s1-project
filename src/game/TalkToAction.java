@@ -13,15 +13,14 @@ public class TalkToAction extends Action {
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		if (target instanceof Talkable) {
-			
-return ((Talkable) target).talk();
+			return ((Talkable) target).talk();
 		}
 		return target.toString() + " does not want to speak with " + actor.toString() + ".";
 	}
 
 	@Override
 	public String menuDescription(Actor actor) {
-		return target.toString() + " talks to " + actor.toString();
+		return actor.toString() + " talks to " + target.toString();
 	}
 
 	@Override

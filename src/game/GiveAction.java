@@ -18,9 +18,8 @@ public class GiveAction extends Action{
 	public String execute(Actor actor, GameMap map) {
 		giver.removeItemFromInventory(exchangeItem);
 		taker.addItemToInventory(exchangeItem);
-		if (giver instanceof NpcQ) {
-			giver = null;
-		}
+		exchangeItem.getAllowableActions().clear();
+		exchangeItem.getAllowableActions().add(new DropItemAction(exchangeItem));
 		return menuDescription(giver);
 	}
 
