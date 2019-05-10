@@ -52,14 +52,14 @@ public class Application {
 		gameMap.addActor(npcQ, 3, 3);
 		
 		Door plansDoor = new Door();
-		Key plansKey = plansDoor.createKey();
+		Key plansKey = plansDoor.createKey("Antique key");
 		gameMap.add(plansDoor, gameMap.at(8, 3));
 		gameMap.addItem(plansKey, 5, 6);
 		
 		Door drMaybeDoor = new Door();
-		Key drMaybeKey = drMaybeDoor.createKey();
+		Key drMaybeKey = drMaybeDoor.createKey("Shiny key");
 		gameMap.add(drMaybeDoor, gameMap.at(15, 4));
-		gameMap.addItem(plansKey, 5, 7);
+		gameMap.addItem(drMaybeKey, 5, 7);
 		
 		// Testing Implementation of Goon
 		Goon goon = new Goon("Gooney", player);

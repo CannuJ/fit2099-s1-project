@@ -20,8 +20,8 @@ public class Door extends Ground {
 		this(true);
 	}
 	
-	public Key createKey() {
-		Key newKey = new Key(this);
+	public Key createKey(String keyName) {
+		Key newKey = new Key(keyName);
 		keys.add(newKey);
 		return newKey;
 	}
