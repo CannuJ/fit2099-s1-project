@@ -11,6 +11,7 @@ public class DrMaybe extends Actor{
 	// Priority higher for testing purposes (5->5)
 	public DrMaybe(String name, Actor player) {
 		super(name, 'M', 5, 50);
+		this.addItemToInventory(new Item("Rocket Engine", 'E'));
 	}
 
 	private List<ActionFactory> actionFactories = new ArrayList<ActionFactory>();
@@ -39,5 +40,6 @@ public class DrMaybe extends Actor{
 	protected IntrinsicWeapon getIntrinsicWeapon() {
 		return new IntrinsicWeapon(2, "punches");
 	}
+	
 }
 
