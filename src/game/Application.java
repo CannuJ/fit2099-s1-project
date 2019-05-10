@@ -56,6 +56,11 @@ public class Application {
 		gameMap.add(plansDoor, gameMap.at(8, 3));
 		gameMap.addItem(plansKey, 5, 6);
 		
+		Door drMaybeDoor = new Door();
+		Key drMaybeKey = drMaybeDoor.createKey();
+		gameMap.add(drMaybeDoor, gameMap.at(15, 4));
+		gameMap.addItem(plansKey, 5, 7);
+		
 		// Testing Implementation of Goon
 		Goon goon = new Goon("Gooney", player);
 		gameMap.addActor(goon, 5, 5);
