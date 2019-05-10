@@ -63,6 +63,10 @@ public class Application {
 		//Testing Implementation of Ninja
 		Ninja ninja = new Ninja("Greninja", player);
 		gameMap.addActor(ninja, 10, 6);
+		
+		// Testing Implementation of DrMaybe
+		DrMaybe drMaybe = new DrMaybe("Susie", player);
+		gameMap.addActor(drMaybe, 17, 2);
 			
 			world.run();
 	}
