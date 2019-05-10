@@ -46,7 +46,7 @@ public class Application {
 		gameMap.addItem(rocketPlans, 2, 3);
 		
 		LaunchPad lp = new LaunchPad();
-		gameMap.add(lp, gameMap.at(1, 1));
+		gameMap.add(lp, gameMap.at(5, 2));
 		
 		NpcQ npcQ = new NpcQ(player);
 		gameMap.addActor(npcQ, 3, 3);
@@ -59,6 +59,6 @@ public class Application {
 		Ninja ninja = new Ninja("Greninja", player);
 		gameMap.addActor(ninja, 10, 6);
 			
-		world.run();
+			world.run();
 	}
 }

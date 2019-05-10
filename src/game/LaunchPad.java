@@ -32,7 +32,7 @@ public class LaunchPad extends Ground {
 		}
 	}
 	
-	public String hotkeyFromItemName(String itemName) {
+	private String hotkeyFromItemName(String itemName) {
 		for (int i = 0; i<allowableItemNames.length; i++) {
 			if (allowableItemNames[i].equals(itemName)) {
 				return allowableItemHotkeys[i];
@@ -49,6 +49,9 @@ public class LaunchPad extends Ground {
 				String hotkey = hotkeyFromItemName(item.toString());
 				actions.add(new PlaceOnAction(this, item, hotkey));
 			}
+		}
+		if (itemsOnPad.size() == allowableItemNames.length) {
+			actions.add(new WinAction());
 		}
 		return actions;
 	}
