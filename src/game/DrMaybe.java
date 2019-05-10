@@ -31,5 +31,12 @@ public class DrMaybe extends Actor{
 		
 		return super.playTurn(actions,  map,  display);
 	}
+	
+	// DrMaybe deals half damage so override IntrinsicWeapon from 5->2
+	//TODO: Needs to be 2.5
+	@Override
+	protected IntrinsicWeapon getIntrinsicWeapon() {
+		return new IntrinsicWeapon(2, "punches");
+	}
 }
 
