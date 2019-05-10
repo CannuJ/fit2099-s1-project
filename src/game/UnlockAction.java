@@ -20,12 +20,11 @@ public class UnlockAction extends Action {
 
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor.toString() + " unlocks a door";
+		return actor.toString() + " unlocks a door with the " + targetKey.toString();
 	}
 
 	@Override
 	public String hotKey() {
 		return "";
 	}
-
 }
