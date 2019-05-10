@@ -47,7 +47,7 @@ public class WinAction extends Action {
 	
 	/**
 	 * Shows the user the win screen
-	 * User is shown a win message, then the game terminates once they press enter
+	 * User is shown a win message, then the game terminates after the player presses enter
 	 */
 	private void winState() {
 		endScreen.println(winMessage);

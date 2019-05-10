@@ -87,10 +87,16 @@ public class NpcQ extends Actor implements Talkable{
 	@Override
 	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
 		Actions actions = new Actions();
-		if (!inventory.isEmpty() && actorHasPlans(otherActor)) {
-			actions.add(new SwapItemAction(this, otherActor, inventory.get(0), otherActor.getInventory().get(0)));
+		
+		// Only players can interact with Q
+		if (otherActor instanceof Player) {
+			// SwapItemAction if the player has the rocket plans and Q is currently holding something
+			if (!inventory.isEmpty() && actorHasPlans(otherActor)) {
+				actions.add(new SwapItemAction(this, otherActor, inventory.get(0), otherActor.getInventory().get(0)));
+			}
+			// Talk action to players
+			actions.add(new TalkToAction(this));
 		}
-		actions.add(new TalkToAction(this));
 		return actions;
 	}
 
@@ -100,7 +106,6 @@ public class NpcQ extends Actor implements Talkable{
 	 * or hints to the player that they should give the plans to Q if the player does hold the plans in their inventory
 	 * @return a String containing the appropriate line of dialogue to be said to the player outlined above
 	 */
-	@Override
 	public String talk() {
 		return (actorHasPlans(player)) ? speechWithPlans : speechNoPlans;
 	}

@@ -13,8 +13,8 @@ public class LaunchPad extends Ground {
 	
 	private ArrayList<Item> itemsOnPad = new ArrayList<>();
 	
-	/* Avoided using a Map<String, String> here as there's no good way to declare it as a static final literal
-	 * without using Java 9. (Not sure if Java 9 can be used) So two arrays are used instead. */
+	/* Avoided using a HashMap<String, String> here as there's no good way to declare it as a static final literal
+	 * without using Java 9. (Not sure if Java 9 features can be used in the assignment) So two arrays are used instead. */
 	private static final String[] allowableItemNames = new String[] {"Rocket Body", "Rocket Engine"};
 	private static final String[] allowableItemHotkeys = new String[] {"y", "z"};
 
@@ -87,14 +87,20 @@ public class LaunchPad extends Ground {
 	@Override
 	public Actions allowableActions(Actor actor, Location location, String direction){
 		Actions actions = new Actions();
-		for (Item item : actor.getInventory()) {
-			if (itemAllowedOnPad(item)) {
-				String hotkey = hotkeyFromItemName(item.toString());
-				actions.add(new PlaceOnAction(this, item, hotkey));
+		
+		// Only add actions if the actor is the player
+		if (actor instanceof Player) { 
+			// Add place-on actions for each inventory item which can be added to the pad
+			for (Item item : actor.getInventory()) { 
+				if (itemAllowedOnPad(item)) {
+					String hotkey = hotkeyFromItemName(item.toString());
+					actions.add(new PlaceOnAction(this, item, hotkey));
+				}
 			}
-		}
-		if (itemsOnPad.size() == allowableItemNames.length) {
-			actions.add(new WinAction());
+			// Check for a win condition (all specified items present on pad)
+			if (itemsOnPad.size() == allowableItemNames.length) {
+				actions.add(new WinAction());
+			}
 		}
 		return actions;
 	}
