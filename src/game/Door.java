@@ -46,8 +46,8 @@ public class Door extends Ground {
 	public Actions allowableActions(Actor actor, Location location, String direction){
 		Actions actions = new Actions();
 		
-		// Only add actions if the actor is the player
-		if (actor instanceof Player) { 
+		// Only add actions if the actor is the player and is locked
+		if (actor instanceof Player && locked) { 
 			for (Item item : actor.getInventory()) { 
 				if (item instanceof Key) {
 					actions.add(new UnlockAction((Key)item, this));
