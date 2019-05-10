@@ -29,6 +29,7 @@ public class Ninja extends Actor{
 		for (ActionFactory factory : actionFactories) {
 			Action action = factory.getAction(this, map);
 			if(action != null)
+				actions.clear(); // If ninja has move away, remove skip turn. Not ideal
 				return action;
 		}
 		
