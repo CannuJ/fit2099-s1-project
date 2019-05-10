@@ -62,9 +62,9 @@ public class NpcQ extends Actor implements Talkable{
 	 */
 	@Override
 	public Action playTurn(Actions actions, GameMap map, Display display) {
-		if (actorHasPlans(this)) {
+		if (actorHasPlans(this)) {  // Checks if Q now holds the Rocket Plans (meaning the player has traded them for the body)
 			actions.clear();
-			actions.add(new SuicideAction(this, map));
+			actions.add(new SuicideAction(this));
 		} else {
 			for (Action action : actions) {
 				if (!(action instanceof MoveActorAction || action instanceof SkipTurnAction)) {
@@ -98,7 +98,7 @@ public class NpcQ extends Actor implements Talkable{
 	 * Returns a string containing the line of dialogue said to the player when the player talks to Q.
 	 * Q hints to the player to retrieve the Rocket Plans if the player doesn't hold them in their inventory
 	 * or hints to the player that they should give the plans to Q if the player does hold the plans in their inventory
-	 * @return a String containing the appropriate line of dialogue to be said to the player outlined above.
+	 * @return a String containing the appropriate line of dialogue to be said to the player outlined above
 	 */
 	@Override
 	public String talk() {
