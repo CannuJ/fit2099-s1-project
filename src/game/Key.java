@@ -8,7 +8,7 @@ public class Key extends Item {
 	private Door door;
 	
 	public Key(Door door) {
-		super("Key #" + (++keyCount), '1');
+		super("key no. " + (++keyCount), '1');
 		this.door = door;
 	}
 

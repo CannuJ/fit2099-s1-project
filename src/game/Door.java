@@ -37,9 +37,24 @@ public class Door extends Ground {
 	private boolean changeLockState(Key key, boolean newState) {
 		if (isCorrectKey(key)) {
 			locked = newState;
+			updateChar();
 			return true;
 		}
 		return false;
+	}
+	
+	public Actions allowableActions(Actor actor, Location location, String direction){
+		Actions actions = new Actions();
+		
+		// Only add actions if the actor is the player
+		if (actor instanceof Player) { 
+			for (Item item : actor.getInventory()) { 
+				if (item instanceof Key) {
+					actions.add(new UnlockAction((Key)item, this));
+				}
+			}
+		}
+		return actions;
 	}
 	
 	public boolean lock(Key key) {
