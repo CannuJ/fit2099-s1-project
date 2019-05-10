@@ -23,10 +23,11 @@ public class StunPlayer implements ActionFactory {
 		
 		if (currentDistance <= 5) {
 			
-		}
 			this.stunSuccess = new Random().nextInt(2); // Random Integer between 0-1
 			if (stunSuccess == 1) { // 50% Chance
 				return new StunAction(target);
+		}
+			return null;
 		}
 		return null;
 	}
