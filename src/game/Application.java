@@ -42,14 +42,12 @@ public class Application {
 		Grunt grunt2 = new Grunt("Norbert", player);
 		gameMap.addActor(grunt2,  10, 10);
 		
-		// Testing Rocket Plans, Engine and Body
-		// Will move to appropriate locations later
 		Item rocketPlans = new Item("Rocket Plans", 'P');
 		gameMap.addItem(rocketPlans, 2, 3);
-//		Item rocketEngine = new Item("Rocket Engine", 'E');
-//		gameMap.addItem(rocketEngine, 8, 9);
-//		Item rocketBody = new Item("Rocket Body", 'B');
-//		gameMap.addItem(rocketBody, 10, 8);
+		
+		LaunchPad lp = new LaunchPad();
+		gameMap.add(lp, gameMap.at(1, 1));
+		
 		NpcQ npcQ = new NpcQ(player);
 		gameMap.addActor(npcQ, 3, 3);
 		

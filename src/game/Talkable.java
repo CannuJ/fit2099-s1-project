@@ -1,8 +1,8 @@
 package game;
 
 /**
- * An interface which describes an Actor which can be "talked to" via the TalkToAction
- * Actors which implement this interface have a talk() method
+ * An interface which describes an object which can be "talked to" via the TalkToAction
+ * Objects which implement this interface have a talk() method
  */
 
 public interface Talkable {

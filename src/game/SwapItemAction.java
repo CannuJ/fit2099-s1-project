@@ -9,6 +9,7 @@ public class SwapItemAction extends GiveAction {
 	 * It is essentially a subclass of GiveAction which calls GiveAction twice but with an extra item
 	 */
 	
+	private Item firstItem;
 	private Item secondItem;
 
 	/**
@@ -21,6 +22,7 @@ public class SwapItemAction extends GiveAction {
 	 */
 	public SwapItemAction(Actor giver, Actor taker, Item firstItem, Item secondItem) {
 		super(giver, taker, firstItem);
+		this.firstItem = firstItem;
 		this.secondItem = secondItem;
 	}
 	
@@ -32,9 +34,15 @@ public class SwapItemAction extends GiveAction {
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		String output = "";
-		output += super.execute(actor, map) + "\n";
+		super.execute(actor, map);
+		output += super.menuDescription(actor) + "\n";
 		Action secondGive = new GiveAction(taker, giver, secondItem);
 		output += secondGive.execute(actor, map);
 		return output;
+	}
+	
+	@Override
+	public String menuDescription(Actor actor) {
+		return actor.toString() + " gives " + secondItem.toString() + " to " + giver.toString();
 	}
 }

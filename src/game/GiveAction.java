@@ -12,9 +12,9 @@ import edu.monash.fit2099.engine.*;
 
 public class GiveAction extends Action{
 	
-	public Actor giver;
-	public Actor taker;
-	public Item exchangeItem;
+	protected Actor giver;
+	protected Actor taker;
+	private Item exchangeItem;
 	
 	
 	/**
@@ -39,7 +39,7 @@ public class GiveAction extends Action{
 		taker.addItemToInventory(exchangeItem);
 		exchangeItem.getAllowableActions().clear();
 		exchangeItem.getAllowableActions().add(new DropItemAction(exchangeItem));
-		return menuDescription(giver);
+		return menuDescription(taker);
 	}
 
 	/**
