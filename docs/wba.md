@@ -165,12 +165,12 @@ Members:
   </tr>
   <tr>
     <td>Implement Door class, add implementation of its key, test</td>
-    <td>Julian</td>
+    <td>Alex</td>
     <td>TBA</td>
   </tr>
   <tr>
     <td>Review Door and key implementations and test locally</td>
-    <td>Alex</td>
+    <td>Julian</td>
     <td>TBA</td>
   </tr>
   <tr>
@@ -185,7 +185,7 @@ Members:
   </tr>
   <tr>
     <td>Add locked room for Doctor Maybe</td>
-    <td>Julian</td>
+    <td>Alex</td>
     <td>TBA</td>
   </tr>
   <tr>
@@ -195,7 +195,7 @@ Members:
   </tr>
   <tr>
     <td>Test Doctor Maybe, ensuring that guidelines are adheared to exactly</td>
-    <td>Julian</td>
+    <td>Alex</td>
     <td>TBA</td>
   </tr>
   <tr>
@@ -244,5 +244,3 @@ Members:
     <td></td>
   </tr>
 </table>
-
-
