@@ -43,13 +43,18 @@ public class Application {
 		gameMap.addActor(grunt2,  10, 10);
 		
 		Item rocketPlans = new Item("Rocket Plans", 'P');
-		gameMap.addItem(rocketPlans, 2, 3);
+		gameMap.addItem(rocketPlans, 5, 2);
 		
 		LaunchPad lp = new LaunchPad();
-		gameMap.add(lp, gameMap.at(5, 2));
+		gameMap.add(lp, gameMap.at(9, 9));
 		
 		NpcQ npcQ = new NpcQ(player);
 		gameMap.addActor(npcQ, 3, 3);
+		
+		Door plansDoor = new Door();
+		Key plansKey = plansDoor.createKey();
+		gameMap.add(plansDoor, gameMap.at(8, 3));
+		gameMap.addItem(plansKey, 5, 6);
 		
 		// Testing Implementation of Goon
 		Goon goon = new Goon("Gooney", player);

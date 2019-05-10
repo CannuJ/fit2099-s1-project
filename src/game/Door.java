@@ -9,11 +9,15 @@ public class Door extends Ground {
 	private ArrayList<Key> keys = new ArrayList<>();
 	private static final char lockedChar = '=';
 	private static final char unlockedChar = '[';
-
+	
 	public Door(boolean locked) {
 		super(lockedChar);
-		updateChar();
 		this.locked = locked;
+		updateChar();
+	}
+	
+	public Door() {
+		this(true);
 	}
 	
 	public Key createKey() {
