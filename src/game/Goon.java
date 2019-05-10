@@ -6,13 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
-public class Grunt extends Actor {
-
-	// Grunts have 50 hitpoints and are always represented with a g
-	public Grunt(String name, Actor player) {
-		super(name, 'g', 5, 50);
+public class Goon extends Actor{
+	
+	// Goons have 50 hitpoints and are always represented with a G
+	// Priority higher for testing purposes (5->5)
+	public Goon(String name, Actor player) {
+		super(name, 'G', 5, 50);
 		addBehaviour(new FollowBehaviour(player));
+		addBehaviour(new InsultAction(player));
 	}
 
 	private List<ActionFactory> actionFactories = new ArrayList<ActionFactory>();
@@ -31,4 +32,11 @@ public class Grunt extends Actor {
 		
 		return super.playTurn(actions,  map,  display);
 	}
+	
+	// Goon deals double damage so override IntrinsicWeapon from 5->10
+	@Override
+	protected IntrinsicWeapon getIntrinsicWeapon() {
+		return new IntrinsicWeapon(10, "punches");
+	}
 }
+

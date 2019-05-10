@@ -26,6 +26,7 @@ public class AttackAction extends Action {
 		}
 
 		int damage = weapon.damage();
+			
 		String result = actor + " " + weapon.verb() + " " + subject + " for " + damage + " damage.";
 
 		subject.hurt(damage);

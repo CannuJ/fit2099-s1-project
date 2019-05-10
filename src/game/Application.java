@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.FancyGroundFactory;
 import edu.monash.fit2099.engine.GameMap;
+import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Player;
 import edu.monash.fit2099.engine.World;
 
@@ -40,7 +41,38 @@ public class Application {
 		gameMap.addActor(grunt, 0, 0);
 		Grunt grunt2 = new Grunt("Norbert", player);
 		gameMap.addActor(grunt2,  10, 10);
+		
+		Item rocketPlans = new Item("Rocket Plans", 'P');
+		gameMap.addItem(rocketPlans, 5, 2);
+		
+		LaunchPad lp = new LaunchPad();
+		gameMap.add(lp, gameMap.at(9, 9));
+		
+		NpcQ npcQ = new NpcQ(player);
+		gameMap.addActor(npcQ, 3, 3);
+		
+		Door plansDoor = new Door();
+		Key plansKey = plansDoor.createKey("Antique key");
+		gameMap.add(plansDoor, gameMap.at(8, 3));
+		gameMap.addItem(plansKey, 5, 6);
+		
+		Door drMaybeDoor = new Door();
+		Key drMaybeKey = drMaybeDoor.createKey("Shiny key");
+		gameMap.add(drMaybeDoor, gameMap.at(15, 4));
+		gameMap.addItem(drMaybeKey, 5, 7);
+		
+		// Testing Implementation of Goon
+		Goon goon = new Goon("Gooney", player);
+		gameMap.addActor(goon, 5, 5);
+		
+		// Testing Implementation of Ninja
+		Ninja ninja = new Ninja("Greninja", player);
+		gameMap.addActor(ninja, 10, 6);
+		
+		// Testing Implementation of DrMaybe
+		DrMaybe drMaybe = new DrMaybe("DrMaybe", player);
+		gameMap.addActor(drMaybe, 17, 2);
 			
-		world.run();
+			world.run();
 	}
 }
