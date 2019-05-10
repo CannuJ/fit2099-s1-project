@@ -5,8 +5,6 @@ import edu.monash.fit2099.engine.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
-// Would rather extend from Grunt... (Is this possible?)
 public class DrMaybe extends Actor{
 	
 	// DrMaybe has 50 hitpoints and is always represented with a M
@@ -17,12 +15,15 @@ public class DrMaybe extends Actor{
 
 	private List<ActionFactory> actionFactories = new ArrayList<ActionFactory>();
 
+	// Currently no behaviour other than attacking
 	private void addBehaviour(ActionFactory behaviour) {
 		actionFactories.add(behaviour);
 	}
 
 	@Override
 	public Action playTurn(Actions actions, GameMap map, Display display) {
+		actions.clear(); // Clearing default actions, will tidy in next iteration
+		actions.add(new SkipTurnAction()); // Must include SkipTurnAction for now
 		for (ActionFactory factory : actionFactories) {
 			Action action = factory.getAction(this, map);
 			if(action != null)

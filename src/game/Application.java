@@ -65,12 +65,12 @@ public class Application {
 		Goon goon = new Goon("Gooney", player);
 		gameMap.addActor(goon, 5, 5);
 		
-		//Testing Implementation of Ninja
+		// Testing Implementation of Ninja
 		Ninja ninja = new Ninja("Greninja", player);
 		gameMap.addActor(ninja, 10, 6);
 		
 		// Testing Implementation of DrMaybe
-		DrMaybe drMaybe = new DrMaybe("Susie", player);
+		DrMaybe drMaybe = new DrMaybe("DrMaybe", player);
 		gameMap.addActor(drMaybe, 17, 2);
 			
 			world.run();
