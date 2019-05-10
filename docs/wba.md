@@ -244,3 +244,7 @@ Members:
     <td></td>
   </tr>
 </table>
+
+It was chosen to ammend this WBA agreement on 10/5/19.
+Alex as agreed to take over adding doors and keys to the game,
+as this is a fairer balance.
