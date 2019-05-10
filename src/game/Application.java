@@ -65,7 +65,7 @@ public class Application {
 		gameMap.addActor(ninja, 10, 6);
 		
 		// Testing Implementation of DrMaybe
-		DrMaybe drMaybe = new DrMaybe("Susie", player);
+		DrMaybe drMaybe = new DrMaybe("DrMaybe", player);
 		gameMap.addActor(drMaybe, 17, 2);
 			
 			world.run();
