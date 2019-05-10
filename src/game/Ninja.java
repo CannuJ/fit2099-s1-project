@@ -13,7 +13,7 @@ public class Ninja extends Actor{
 	public Ninja(String name, Actor player) {
 		super(name, 'N', 5, 50);
 		addBehaviour(new MoveAway(player));
-		// TODO: StunBag
+		addBehaviour(new StunPlayer(player));
 	}
 
 	private List<ActionFactory> actionFactories = new ArrayList<ActionFactory>();
@@ -29,12 +29,10 @@ public class Ninja extends Actor{
 		for (ActionFactory factory : actionFactories) {
 			Action action = factory.getAction(this, map);
 			if(action != null)
-				actions.clear(); // If ninja has move away, remove skip turn. Not ideal
 				return action;
 		}
 		
 		return super.playTurn(actions,  map,  display);
 	}
-	// TODO: StunBag Override?
 }
 

@@ -1,6 +1,8 @@
 package game;
 
 import edu.monash.fit2099.engine.*;
+import edu.monash.fit2099.engine.SpeechAction;
+
 import java.util.*;
 
 public class InsultAction implements ActionFactory {
