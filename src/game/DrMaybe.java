@@ -7,14 +7,12 @@ import java.util.List;
 
 
 // Would rather extend from Grunt... (Is this possible?)
-public class Goon extends Actor{
+public class DrMaybe extends Actor{
 	
-	// Goons have 50 hitpoints and are always represented with a G
+	// DrMaybe has 50 hitpoints and is always represented with a M
 	// Priority higher for testing purposes (5->5)
-	public Goon(String name, Actor player) {
-		super(name, 'G', 5, 50);
-		addBehaviour(new FollowBehaviour(player));
-		addBehaviour(new InsultAction(player));
+	public DrMaybe(String name, Actor player) {
+		super(name, 'M', 5, 50);
 	}
 
 	private List<ActionFactory> actionFactories = new ArrayList<ActionFactory>();
@@ -34,10 +32,11 @@ public class Goon extends Actor{
 		return super.playTurn(actions,  map,  display);
 	}
 	
-	// Goon deals double damage so override IntrinsicWeapon from 5->10
+	// DrMaybe deals half damage so override IntrinsicWeapon from 5->2
+	//TODO: Needs to be 2.5
 	@Override
 	protected IntrinsicWeapon getIntrinsicWeapon() {
-		return new IntrinsicWeapon(10, "punches");
+		return new IntrinsicWeapon(2, "punches");
 	}
 }
 
