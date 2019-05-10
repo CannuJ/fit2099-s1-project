@@ -21,10 +21,11 @@ public class StunPlayer implements ActionFactory {
 		
 		int currentDistance = distance(here, there);
 		
+		// Must be within 5 spaces to be able to throw stun bag
 		if (currentDistance <= 5) {
 			
 			this.stunSuccess = new Random().nextInt(2); // Random Integer between 0-1
-			if (stunSuccess == 1) { // 50% Chance
+			if (stunSuccess == 1) { // 50% Chance of StunBag being successful
 				return new StunAction(target);
 		}
 			return null;

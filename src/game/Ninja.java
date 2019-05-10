@@ -24,8 +24,8 @@ public class Ninja extends Actor{
 
 	@Override
 	public Action playTurn(Actions actions, GameMap map, Display display) {
-		actions.clear(); // Needs some action in the actions group
-		actions.add(new SkipTurnAction()); // I don't like this
+		actions.clear(); // Clearing default actions, will tidy in next iteration
+		actions.add(new SkipTurnAction()); // Must include SkipTurnAction for now
 		for (ActionFactory factory : actionFactories) {
 			Action action = factory.getAction(this, map);
 			if(action != null)

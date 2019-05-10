@@ -60,7 +60,7 @@ public class Application {
 		Goon goon = new Goon("Gooney", player);
 		gameMap.addActor(goon, 5, 5);
 		
-		//Testing Implementation of Ninja
+		// Testing Implementation of Ninja
 		Ninja ninja = new Ninja("Greninja", player);
 		gameMap.addActor(ninja, 10, 6);
 		
