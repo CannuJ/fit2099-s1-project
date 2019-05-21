@@ -142,11 +142,6 @@ Members:
     <td>TBA</td>
   </tr>
   <tr>
-    <td>Implement basic functionality of Q</td>
-    <td>Alex</td>
-    <td>TBA</td>
-  </tr>
-  <tr>
     <td>Add item based dialogue interactions with Q</td>
     <td>Alex</td>
     <td>TBA</td>
