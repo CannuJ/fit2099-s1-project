@@ -242,6 +242,11 @@ Members:
     <td>TBA</td>
   </tr>
   <tr>
+    <td>Update Class/Sequence/UML Diagrams, adjust documentation accordingly</td>
+    <td>Alex, Julian</td>
+    <td>TBA</td>
+  </tr>
+  <tr>
     <td>Create option to fly to moon (when standing at assembled rocket)</td>
     <td>Alex</td>
     <td>TBA</td>
