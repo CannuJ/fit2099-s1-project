@@ -15,8 +15,6 @@ Members:
 
 **Tasks:**
 
-**Note:** As of the submission of this assignment, the due date for Assignment 2 has not yet been released. As a result, tasks in Assignment 2 will not have a date given to them.*
-
 <table>
   <tr>
     <td>Task</td>
