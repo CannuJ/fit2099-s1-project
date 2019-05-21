@@ -108,6 +108,16 @@ public class Application {
 		// Testing Implementation of Ninja
 		Ninja ninja2 = new Ninja("Rockinja", player);
 		moonMap.addActor(ninja2, 10, 3);
+		
+		// Testing Implementation of finalBoss
+		finalBoss boss = new finalBoss("Yugo Maxx", player);
+		moonMap.addActor(boss, 5, 5);
+		
+		// Add launchpad to moonMap
+		
+		// Testing Implementation of LaunchPad
+		LaunchPad lp2 = new LaunchPad();
+		moonMap.add(lp2, moonMap.at(9, 9));
 			
 			world.run();
 	}
