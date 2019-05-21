@@ -239,7 +239,97 @@ Members:
     <td>TBA</td>
   </tr>
   <tr>
-    <td>Assignment 2 Submission via GitLab [unknown due date]</td>
+    <td>Assignment 2 Submission via GitLab [Friday 10th May 11:55]</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Complete Ninja StunAction and test functionality</td>
+    <td>Julian</td>
+    <td>TBA</td>
+  </tr>
+  <tr>
+    <td>Create option to fly to moon (when standing at assembled rocket)</td>
+    <td>Alex</td>
+    <td>TBA</td>
+  </tr>
+  <tr>
+    <td>Create Moonbase Map (10 x 10 squares minimum)</td>
+    <td>Alex & Julian</td>
+    <td>TBA</td>
+  </tr>
+  <tr>
+    <td>Add enemies to Moonbase Map (Goons, Grunts, Ninjas)</td>
+    <td>Julian</td>
+    <td>TBA</td>
+  </tr>
+  <tr>
+    <td>Ensure Rocket offers travel back and forth from Earth <-> Moonbase</td>
+    <td>Julian</td>
+    <td>TBA</td>
+  </tr>
+  <tr>
+    <td>Test Rocket Functionality locally</td>
+    <td>Alex & Julian</td>
+    <td>TBA</td>
+  </tr>
+  <tr>
+    <td>Add Spacesuit & Oxygen Dispenser Items to Earth</td>
+    <td>Julian</td>
+    <td>TBA</td>
+  </tr>
+  <tr>
+    <td>Assist with and review implementation of above items and test locally</td>
+    <td>Alex</td>
+    <td>TBA</td>
+  </tr>
+  <tr>
+    <td>Implement basic functionality of Q</td>
+    <td>Alex</td>
+    <td>TBA</td>
+  </tr>
+  <tr>
+    <td>Implement initial version of Yugo Maxx (FinalBoss)</td>
+    <td>Julian</td>
+    <td>TBA</td>
+  </tr>
+  <tr>
+    <td>Add initial version of WaterPistol, with required functionality</td>
+    <td>Alex</td>
+    <td>TBA</td>
+  </tr>
+  <tr>
+    <td>Review implementation of FinalBoss/WaterPistol and test functionalities</td>
+    <td>Alex & Julian</td>
+    <td>TBA</td>
+  </tr>
+  <tr>
+    <td>Implement Exiting Game Functionality</td>
+    <td>Alex</td>
+    <td>TBA</td>
+  </tr>
+  <tr>
+    <td>Each play the game from start to finish, noting any bugs/issues along the way</td>
+    <td>Alex, Julian</td>
+    <td>TBA</td>
+  </tr>
+  <tr>
+    <td>Resolve issues found after playthrough, if any</td>
+    <td>Alex, Julian</td>
+    <td>TBA</td>
+  </tr>
+  <tr>
+    <td>Test for corner cases, report and fix all issues found</td>
+    <td>Alex, Julian</td>
+    <td>TBA</td>
+  </tr>
+  <tr>
+    <td>Double check the entire Assignment, add finishing touches</td>
+    <td>Alex, Julian</td>
+    <td>TBA</td>
+  </tr>
+  <tr>
+    <td>Assignment 3 Submission via GitLab [Friday 31st May 11:55]</td>
     <td></td>
     <td></td>
   </tr>
