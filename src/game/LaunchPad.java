@@ -12,35 +12,47 @@ public class LaunchPad extends Ground {
 	 */
 	
 	private ArrayList<Item> itemsOnPad = new ArrayList<>();
-	
-	/* Avoided using a HashMap<String, String> here as there's no good way to declare it as a static final literal
-	 * without using Java 9. (Not sure if Java 9 features can be used in the assignment) So two arrays are used instead. */
 	private static final String[] allowableItemNames = new String[] {"Rocket Body", "Rocket Engine"};
-	private static final String[] allowableItemHotkeys = new String[] {"y", "z"};
 	private Location destination;
-	private boolean completeRocket;
+	private boolean completedRocket;
 	private String destinationName;
 
 	/**
 	 * Constructor for the launch pad using Ground's constructor
-	 * The launch pad is always represented by an "X"
+	 * The launch pad is represented by an 'X' when the rocket is incomplete
+	 * @param newMap the destination game map for the player once the rocket has been completed and can be flown
+	 * @param newX the destination x coordinate for the player once the rocket has been completed and can be flown
+	 * @param newMap the destination y coordinate for the player once the rocket has been completed and can be flown
+	 * @param destinationName a String describing the name of the destination. Will be prepended with "Player moves to" 
+	 * 			when the player flies the rocket
+	 * @param completedRocket a boolean representing whether the launch pad should contain a complete rocket when it is created or not
 	 */
-	public LaunchPad(GameMap newMap, int newX, int newY, String destinationName, boolean completeRocket) {
+	public LaunchPad(GameMap newMap, int newX, int newY, String destinationName, boolean completedRocket) {
 		super('X');
 		this.destination = newMap.at(newX, newY);
 		this.destinationName = destinationName;
-		this.completeRocket = completeRocket;
+		if (completedRocket) {
+			completeRocket();
+		} else {
+			this.completedRocket = false;
+		}
 	}
 	
 	/**
 	 * Constructor for the launch pad using Ground's constructor
-	 * The launch pad is always represented by an "X"
+	 * The launch pad is represented by an 'X' when the rocket is incomplete
+	 * This constructor creates an incomplete launchpad (without a rocket)
+	 * @param newMap the destination game map for the player once the rocket has been completed and can be flown
+	 * @param newX the destination x coordinate for the player once the rocket has been completed and can be flown
+	 * @param newMap the destination y coordinate for the player once the rocket has been completed and can be flown
+	 * @param destinationName a String describing the name of the destination. Will be prepended with "Player moves to" 
+	 * 			when the player flies the rocket
 	 */
 	public LaunchPad(GameMap newMap, int newX, int newY, String destinationName) {
 		super('X');
 		this.destination = newMap.at(newX, newY);
 		this.destinationName = destinationName;
-		this.completeRocket = false;
+		this.completedRocket = false;
 	}
 	
 	/**
@@ -59,8 +71,18 @@ public class LaunchPad extends Ground {
 	}
 	
 	/**
+	 * Sets the launch pad to its 'complete' status, meaning now holds a fully functioning rocket
+	 * This also changes the launchpad's display character to a rocket (use your imagination)
+	 */
+	private void completeRocket() {
+		completedRocket = true;
+		displayChar = '^';
+	}
+	
+	/**
 	 * Adds a given item onto the launch pad
 	 * Will only add it if it is an item specified as a permitted item
+	 * Sets the rocket to its 'complete' status once every item has been collected
 	 * @param item the item to add to the launch pad
 	 * @param actor the player who possesses the given item in their inventory
 	 */
@@ -68,22 +90,10 @@ public class LaunchPad extends Ground {
 		if (itemAllowedOnPad(item) && actor instanceof Player) {
 			actor.removeItemFromInventory(item);
 			itemsOnPad.add(item);
-		}
-	}
-	
-	/**
-	 * Translates between the allowed item's name to a hotkey 
-	 * which is assigned to the action of adding it to the pad
-	 * @param itemName a String of the item's name which is to be translated to a hotkey
-	 * @return the hotkey as a String, null if it is not found in the predetermined array of permitted names
-	 */
-	private String hotkeyFromItemName(String itemName) {
-		for (int i = 0; i<allowableItemNames.length; i++) {
-			if (allowableItemNames[i].equals(itemName)) {
-				return allowableItemHotkeys[i];
+			if (itemsOnPad.size() == allowableItemNames.length) {
+				completeRocket();
 			}
 		}
-		return null;
 	}
 	
 	/**
@@ -92,7 +102,7 @@ public class LaunchPad extends Ground {
 	 * to the launch pad's collection of items
 	 * 
 	 * Checks to see if the player has placed all required items onto the launch pad.
-	 * If they have, then an action winning the game is offered to the player (flying the rocket)
+	 * If they have, then an action of moving to the rocket's given destination is given to the player.
 	 * 
 	 * Only the player will receive any actions from the launch pad.
 	 * 
@@ -107,17 +117,16 @@ public class LaunchPad extends Ground {
 		
 		// Only the player can interact with the rocket
 		if (actor instanceof Player) { 
-			if (!completeRocket) {
+			if (!completedRocket) {
 				// Add place-on actions for each inventory item which can be added to the pad
 				for (Item item : actor.getInventory()) { 
 					if (itemAllowedOnPad(item)) {
-						String hotkey = hotkeyFromItemName(item.toString());
-						actions.add(new PlaceOnAction(this, item, hotkey));
+						actions.add(new PlaceOnAction(this, item, null));
 					}
 				}
 			} else {
 			// Allow the player to move to the rocket's destination
-				actions.add(new MoveActorAction(destination, destinationName));
+				actions.add(new MoveActorAction(destination, "to " + destinationName));
 			}
 		}
 		return actions;

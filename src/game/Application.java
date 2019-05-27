@@ -82,7 +82,7 @@ public class Application {
 		Item rocketPlans = new Item("Rocket Plans", 'P');
 		earthMap.addItem(rocketPlans, 5, 2);
 		// Testing Implementation of LaunchPad
-		LaunchPad lp = new LaunchPad(moonMap, 2, 2, "the Moon");
+		LaunchPad lp = new LaunchPad(moonMap, 2, 2, "the Moon", true);
 		earthMap.add(lp, earthMap.at(9, 9));
 		// Testing Implementation of Door/Key
 		Door plansDoor = new Door();
