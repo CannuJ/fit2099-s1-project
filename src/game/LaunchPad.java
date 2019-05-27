@@ -17,13 +17,30 @@ public class LaunchPad extends Ground {
 	 * without using Java 9. (Not sure if Java 9 features can be used in the assignment) So two arrays are used instead. */
 	private static final String[] allowableItemNames = new String[] {"Rocket Body", "Rocket Engine"};
 	private static final String[] allowableItemHotkeys = new String[] {"y", "z"};
+	private Location destination;
+	private boolean completeRocket;
+	private String destinationName;
 
 	/**
 	 * Constructor for the launch pad using Ground's constructor
 	 * The launch pad is always represented by an "X"
 	 */
-	public LaunchPad() {
+	public LaunchPad(GameMap newMap, int newX, int newY, String destinationName, boolean completeRocket) {
 		super('X');
+		this.destination = newMap.at(newX, newY);
+		this.destinationName = destinationName;
+		this.completeRocket = completeRocket;
+	}
+	
+	/**
+	 * Constructor for the launch pad using Ground's constructor
+	 * The launch pad is always represented by an "X"
+	 */
+	public LaunchPad(GameMap newMap, int newX, int newY, String destinationName) {
+		super('X');
+		this.destination = newMap.at(newX, newY);
+		this.destinationName = destinationName;
+		this.completeRocket = false;
 	}
 	
 	/**
@@ -88,18 +105,19 @@ public class LaunchPad extends Ground {
 	public Actions allowableActions(Actor actor, Location location, String direction){
 		Actions actions = new Actions();
 		
-		// Only add actions if the actor is the player
+		// Only the player can interact with the rocket
 		if (actor instanceof Player) { 
-			// Add place-on actions for each inventory item which can be added to the pad
-			for (Item item : actor.getInventory()) { 
-				if (itemAllowedOnPad(item)) {
-					String hotkey = hotkeyFromItemName(item.toString());
-					actions.add(new PlaceOnAction(this, item, hotkey));
+			if (!completeRocket) {
+				// Add place-on actions for each inventory item which can be added to the pad
+				for (Item item : actor.getInventory()) { 
+					if (itemAllowedOnPad(item)) {
+						String hotkey = hotkeyFromItemName(item.toString());
+						actions.add(new PlaceOnAction(this, item, hotkey));
+					}
 				}
-			}
-			// Check for a win condition (all specified items present on pad)
-			if (itemsOnPad.size() == allowableItemNames.length) {
-				actions.add(new WinAction());
+			} else {
+			// Allow the player to move to the rocket's destination
+				actions.add(new MoveActorAction(destination, destinationName));
 			}
 		}
 		return actions;
