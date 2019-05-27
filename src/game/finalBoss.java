@@ -9,6 +9,8 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.IntrinsicWeapon;
+import edu.monash.fit2099.engine.MoveActorAction;
+import edu.monash.fit2099.engine.SkipTurnAction;
 
 public class finalBoss extends Actor{
 	
@@ -23,14 +25,24 @@ public class finalBoss extends Actor{
 	private void addBehaviour(ActionFactory behaviour) {
 	}
 
+	/**
+	 * Executes whenever finalBoss takes their turn.
+	 * In normal circumstances, Yugo Maxx will roam around the map without attacking any other Actors
+	 * If the Player is within attacking distance, finalBoss will attack instead.
+	 * 
+	 * @param actions collection of possible Actions for this Actor
+	 * @param map     the map containing the Actor
+	 * @param display the I/O object to which messages may be written
+	 * @return the Action to be performed
+	 * 
+	 */
 	@Override
 	public Action playTurn(Actions actions, GameMap map, Display display) {
-		for (ActionFactory factory : actionFactories) {
-			Action action = factory.getAction(this, map);
-			if(action != null)
-				return action;
+		for (Action action : actions) {
+			if (!(action instanceof MoveActorAction || action instanceof SkipTurnAction)) {
+				actions.remove(action);
+			}
 		}
-		
 		return super.playTurn(actions,  map,  display);
 	}
 	

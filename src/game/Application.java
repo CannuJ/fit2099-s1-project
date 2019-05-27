@@ -53,7 +53,7 @@ public class Application {
 		
 		// Add player to earthMap
 		Actor player = new Player("Player", '@', 1, 100);
-		world.addPlayer(player, earthMap, 2, 2);
+		world.addPlayer(player, moonMap, 2, 2);
 		
 		// Add enemies to earthMap
 		
