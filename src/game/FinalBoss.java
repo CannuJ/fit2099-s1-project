@@ -12,11 +12,11 @@ import edu.monash.fit2099.engine.IntrinsicWeapon;
 import edu.monash.fit2099.engine.MoveActorAction;
 import edu.monash.fit2099.engine.SkipTurnAction;
 
-public class finalBoss extends Actor{
+public class FinalBoss extends Actor{
 	
 	// finalBoss is TODO: invulernable (add exoskeleton), and is always represented with a M
 	// Priority higher for testing purposes (5->5)
-	public finalBoss(String name, Actor player) {
+	public FinalBoss(String name, Actor player) {
 		super(name, 'M', 5, 50);
 	}
 

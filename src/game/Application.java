@@ -120,7 +120,7 @@ public class Application {
 		moonMap.addActor(ninja2, 10, 3);
 		
 		// Testing Implementation of finalBoss
-		finalBoss boss = new finalBoss("Yugo Maxx", player);
+		FinalBoss boss = new FinalBoss("Yugo Maxx", player);
 		moonMap.addActor(boss, 5, 5);
 		
 		// Add launch pad to moonMap

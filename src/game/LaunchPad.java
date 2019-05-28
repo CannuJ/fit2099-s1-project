@@ -125,8 +125,13 @@ public class LaunchPad extends Ground {
 					}
 				}
 			} else {
-			// Allow the player to move to the rocket's destination
-				actions.add(new MoveActorAction(destination, destinationName));
+				// Check if SpaceSuit are in inventory
+				for (Item item : actor.getInventory() ) {
+					if (item instanceof SpaceSuit) {
+						// Allow the player to move to the rocket's destination
+						actions.add(new MoveActorAction(destination, destinationName));
+					}
+				}
 			}
 		}
 		return actions;
