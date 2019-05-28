@@ -14,10 +14,13 @@ import edu.monash.fit2099.engine.SkipTurnAction;
 
 public class FinalBoss extends Actor{
 	
+	private boolean hasExoskeleton;
+	
 	// finalBoss is TODO: invulernable (add exoskeleton), and is always represented with a M
 	// Priority higher for testing purposes (5->5)
 	public FinalBoss(String name, Actor player) {
 		super(name, 'M', 5, 50);
+		this.hasExoskeleton = true;
 	}
 
 	private List<ActionFactory> actionFactories = new ArrayList<ActionFactory>();
@@ -44,6 +47,21 @@ public class FinalBoss extends Actor{
 			}
 		}
 		return super.playTurn(actions,  map,  display);
+	}
+	
+	/**
+	 * If Yugo Maxx has the ExoSkeleton on, ignore damage.
+	 *
+	 * @param points number of hitpoints to deduct.
+	 */
+	@Override
+	public void hurt(int points) {
+		if (!hasExoskeleton) {
+		hitPoints -= points;
+		}
+		else {
+			System.out.println("Yugo Maxx is still wearing his super suit!\nThe damage was mitigated!");
+		}
 	}
 	
 	// finalBoss deals double damage so override IntrinsicWeapon from 5->10

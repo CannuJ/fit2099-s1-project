@@ -91,8 +91,8 @@ public class Application {
 		SpaceSuit spaceSuit = new SpaceSuit("Space Suit");
 		earthMap.addItem(spaceSuit, 15, 8);
 		
-		OxygenTank oxygenTank = new OxygenTank("Oxygen Tank");
-		earthMap.addItem(oxygenTank, 16, 8);
+		OxygenDispenser oxygenDispenser = new OxygenDispenser('o');
+		earthMap.add(oxygenDispenser, earthMap.at(16, 8));
 		
 		// Testing Implementation of Door/Key
 		Door plansDoor = new Door();

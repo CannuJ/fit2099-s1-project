@@ -9,6 +9,7 @@ public class SpaceSuit extends Item {
 	 */
 	
 	private String name;
+	private Integer oxygenLevel;
 	
 	/**
 	 * Constructor for a SpaceSuit
