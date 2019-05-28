@@ -126,7 +126,7 @@ public class LaunchPad extends Ground {
 				}
 			} else {
 			// Allow the player to move to the rocket's destination
-				actions.add(new MoveActorAction(destination, "to " + destinationName));
+				actions.add(new TeleportAction(destination, "flies", "the Moon"));
 			}
 		}
 		return actions;
