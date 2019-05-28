@@ -86,6 +86,14 @@ public class Application {
 		earthMap.add(lp, earthMap.at(9, 9));
 		// Add an invisible player only tile where the player will spawn at the destination
 		earthMap.add(new PlayerOnlyTile('.'), earthMap.at(9, 10));
+		
+		// Testing Implementation of SpaceSuit/OxygenTank
+		SpaceSuit spaceSuit = new SpaceSuit("Space Suit");
+		earthMap.addItem(spaceSuit, 15, 8);
+		
+		OxygenTank oxygenTank = new OxygenTank("Oxygen Tank");
+		earthMap.addItem(oxygenTank, 16, 8);
+		
 		// Testing Implementation of Door/Key
 		Door plansDoor = new Door();
 		Key plansKey = plansDoor.createKey("Antique key");
