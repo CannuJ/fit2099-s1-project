@@ -2,7 +2,7 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
-public class NpcQ extends Actor implements Talkable{
+public class NpcQ extends Actor{
 	
 	/*
 	 * The Actor class that implements the in-game NPC named Q.
@@ -94,8 +94,8 @@ public class NpcQ extends Actor implements Talkable{
 			if (!inventory.isEmpty() && otherActorsPlans != null) {
 				actions.add(new SwapItemAction(this, otherActor, inventory.get(0), otherActorsPlans));
 			}
-			// Talk action to players
-			actions.add(new TalkToAction(this));
+			// Speech action to player
+			actions.add(new TalkToAction(this, talk()));
 		}
 		return actions;
 	}
@@ -107,7 +107,7 @@ public class NpcQ extends Actor implements Talkable{
 	 * @return a String containing the appropriate line of dialogue to be said to the player outlined above
 	 */
 	public String talk() {
-		return (getPlansFromActor(player) != null) ? speechWithPlans : speechNoPlans;
+		return (getPlansFromActor(player) == null) ? speechNoPlans : speechWithPlans;
 	}
 }
 

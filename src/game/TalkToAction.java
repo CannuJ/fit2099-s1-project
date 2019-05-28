@@ -10,14 +10,16 @@ public class TalkToAction extends Action {
 	 * 
 	 */
 	
-	public Actor target;
+	private Actor target;
+	private String text;
 	
 	/**
 	 * Constructor for the TalkToAction action
 	 * @param target the actor which is to be talked to
 	 */
-	public TalkToAction(Actor target) {
+	public TalkToAction(Actor target, String text) {
 		this.target = target;
+		this.text = text;
 	}
 
 	/**
@@ -29,10 +31,7 @@ public class TalkToAction extends Action {
 	 */
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		if (target instanceof Talkable) {
-			return ((Talkable) target).talk();
-		}
-		return target.toString() + " does not want to speak with " + actor.toString() + ".";
+		return target.toString() + " says: \""  + text + "\" to " + actor.toString();
 	}
 
 	/**
@@ -50,7 +49,7 @@ public class TalkToAction extends Action {
 	 */
 	@Override
 	public String hotKey() {
-		return "t";
+		return "";
 	}
 
 }
