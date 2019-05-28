@@ -282,11 +282,6 @@ Members:
     <td>TBA</td>
   </tr>
   <tr>
-    <td>Implement basic functionality of Q</td>
-    <td>Alex</td>
-    <td>TBA</td>
-  </tr>
-  <tr>
     <td>Implement initial version of Yugo Maxx (FinalBoss)</td>
     <td>Julian</td>
     <td>TBA</td>
