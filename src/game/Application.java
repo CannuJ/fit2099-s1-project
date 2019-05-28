@@ -82,8 +82,9 @@ public class Application {
 		Item rocketPlans = new Item("Rocket Plans", 'P');
 		earthMap.addItem(rocketPlans, 5, 2);
 		// Testing Implementation of LaunchPad
-		LaunchPad lp = new LaunchPad(moonMap, 2, 2, "the Moon", true);
+		LaunchPad lp = new LaunchPad(moonMap, 9, 10, "to the Moon", false);
 		earthMap.add(lp, earthMap.at(9, 9));
+		earthMap.add(new PlayerOnlyTile('.'), earthMap.at(9, 10));
 		// Testing Implementation of Door/Key
 		Door plansDoor = new Door();
 		Key plansKey = plansDoor.createKey("Antique key");
@@ -116,8 +117,9 @@ public class Application {
 		// Add launchpad to moonMap
 		
 		// Testing Implementation of LaunchPad
-		LaunchPad lp2 = new LaunchPad(earthMap, 2, 2, "Earth", true);
+		LaunchPad lp2 = new LaunchPad(earthMap, 9, 10, "back to Earth", true);
 		moonMap.add(lp2, moonMap.at(9, 9));
+		moonMap.add(new PlayerOnlyTile('.'), moonMap.at(9, 10));
 			
 			world.run();
 	}
