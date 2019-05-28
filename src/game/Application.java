@@ -81,9 +81,10 @@ public class Application {
 		// Testing Implementation of Rocket Plans
 		Item rocketPlans = new Item("Rocket Plans", 'P');
 		earthMap.addItem(rocketPlans, 5, 2);
-		// Testing Implementation of LaunchPad
-		LaunchPad lp = new LaunchPad(moonMap, 9, 10, "to the Moon", false);
+		// Add launch pad to earthMap
+		LaunchPad lp = new LaunchPad(moonMap, 9, 10, "to the Moon");
 		earthMap.add(lp, earthMap.at(9, 9));
+		// Add an invisible player only tile where the player will spawn at the destination
 		earthMap.add(new PlayerOnlyTile('.'), earthMap.at(9, 10));
 		// Testing Implementation of Door/Key
 		Door plansDoor = new Door();
@@ -114,11 +115,10 @@ public class Application {
 		finalBoss boss = new finalBoss("Yugo Maxx", player);
 		moonMap.addActor(boss, 5, 5);
 		
-		// Add launchpad to moonMap
-		
-		// Testing Implementation of LaunchPad
+		// Add launch pad to moonMap
 		LaunchPad lp2 = new LaunchPad(earthMap, 9, 10, "back to Earth", true);
 		moonMap.add(lp2, moonMap.at(9, 9));
+		// Add an invisible player only tile where the player will spawn at the destination
 		moonMap.add(new PlayerOnlyTile('.'), moonMap.at(9, 10));
 			
 			world.run();
