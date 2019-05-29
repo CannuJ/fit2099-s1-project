@@ -9,6 +9,7 @@ import edu.monash.fit2099.engine.FancyGroundFactory;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Player;
+import edu.monash.fit2099.engine.Range;
 import edu.monash.fit2099.engine.World;
 
 public class Application {
@@ -104,6 +105,9 @@ public class Application {
 		Key drMaybeKey = drMaybeDoor.createKey("Shiny key");
 		earthMap.add(drMaybeDoor, earthMap.at(15, 4));
 		earthMap.addItem(drMaybeKey, 5, 7);
+		
+		Lake earthLake = new Lake(earthMap, 18, 20, 6, 9);
+		earthLake.buildLake();
 		
 		// Add enemies to moonMap
 		
