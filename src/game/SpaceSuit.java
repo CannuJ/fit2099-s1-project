@@ -15,10 +15,12 @@ public class SpaceSuit extends Item {
 	 * Constructor for a SpaceSuit
 	 * The character representation of a SpaceSuit is always 'S'
 	 * @param name the name of the SpaceSuit
+	 * @param oxygenLevel the contaienr that holds the oxygen (between 0 and 10)
 	 */
 	public SpaceSuit(String name) {
 		super(name, 'S');
 		this.name = name;
+		this.oxygenLevel = 0;
 	}
 	
 	/**

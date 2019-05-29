@@ -9,7 +9,6 @@ import edu.monash.fit2099.engine.FancyGroundFactory;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Player;
-import edu.monash.fit2099.engine.Range;
 import edu.monash.fit2099.engine.World;
 
 public class Application {
@@ -59,52 +58,39 @@ public class Application {
 		// Add enemies to earthMap
 		
 		// Testing Implementation of Grunt
-		Grunt grunt = new Grunt("Mongo", player);
-		earthMap.addActor(grunt, 0, 0);
-		Grunt grunt2 = new Grunt("Norbert", player);
-		earthMap.addActor(grunt2,  10, 10);
+		earthMap.addActor(new Grunt("Mongo", player), 0, 0);
+		earthMap.addActor(new Grunt("Norbert", player),  10, 10);
 		// Testing Implementation of Goon
-		Goon goon = new Goon("Gooney", player);
-		earthMap.addActor(goon, 5, 5);
+		earthMap.addActor(new Goon("Gooney", player), 5, 5);
 		// Testing Implementation of Ninja
-		Ninja ninja = new Ninja("Greninja", player);
-		earthMap.addActor(ninja, 10, 6);
+		earthMap.addActor(new Ninja("Greninja", player), 10, 6);
 		// Testing Implementation of DrMaybe
-		DrMaybe drMaybe = new DrMaybe("DrMaybe", player);
-		earthMap.addActor(drMaybe, 17, 2);
+		earthMap.addActor(new DrMaybe("DrMaybe", player), 17, 2);
 		
 		// Add NPCQ to earthMap
-		NpcQ npcQ = new NpcQ(player);
-		earthMap.addActor(npcQ, 3, 3);
+		earthMap.addActor(new NpcQ(player), 3, 3);
 		
 		// Add items to earthMap
 		
 		// Testing Implementation of Rocket Plans
-		Item rocketPlans = new Item("Rocket Plans", 'P');
-		earthMap.addItem(rocketPlans, 5, 2);
+		earthMap.addItem(new Item("Rocket Plans", 'P'), 5, 2);
 		// Add launch pad to earthMap
-		LaunchPad lp = new LaunchPad(moonMap, 9, 10, "to the Moon");
-		earthMap.add(lp, earthMap.at(9, 9));
+		earthMap.add(new LaunchPad(moonMap, 9, 10, "to the Moon"), earthMap.at(9, 9));
 		// Add an invisible player only tile where the player will spawn at the destination
 		earthMap.add(new PlayerOnlyTile('.'), earthMap.at(9, 10));
 		
 		// Testing Implementation of SpaceSuit/OxygenTank
-		SpaceSuit spaceSuit = new SpaceSuit("Space Suit");
-		earthMap.addItem(spaceSuit, 15, 8);
-		
-		OxygenDispenser oxygenDispenser = new OxygenDispenser('o');
-		earthMap.add(oxygenDispenser, earthMap.at(16, 8));
+		earthMap.addItem(new SpaceSuit("Space Suit"), 15, 8);
+		earthMap.add(new OxygenDispenser('o'), earthMap.at(16, 8));
 		
 		// Testing Implementation of Door/Key
 		Door plansDoor = new Door();
-		Key plansKey = plansDoor.createKey("Antique key");
 		earthMap.add(plansDoor, earthMap.at(8, 3));
-		earthMap.addItem(plansKey, 5, 6);
+		earthMap.addItem(plansDoor.createKey("Antique key"), 5, 6);
 		// Testing Implementation of DrMaybe Door/Key
 		Door drMaybeDoor = new Door();
-		Key drMaybeKey = drMaybeDoor.createKey("Shiny key");
 		earthMap.add(drMaybeDoor, earthMap.at(15, 4));
-		earthMap.addItem(drMaybeKey, 5, 7);
+		earthMap.addItem(drMaybeDoor.createKey("Shiny key"), 5, 7);
 		
 		Lake earthLake = new Lake(earthMap, 18, 20, 6, 9);
 		earthLake.buildLake();
@@ -112,27 +98,21 @@ public class Application {
 		// Add enemies to moonMap
 		
 		// Testing Implementation of Grunt
-		Grunt grunt3 = new Grunt("Moondo", player);
-		moonMap.addActor(grunt3, 20, 0);
-		Grunt grunt4 = new Grunt("Spacheep", player);
-		moonMap.addActor(grunt4,  15, 7);
+		moonMap.addActor(new Grunt("Moondo", player), 20, 0);
+		moonMap.addActor(new Grunt("Spacheep", player),  15, 7);
 		// Testing Implementation of Goon
-		Goon goon2 = new Goon("Goonity", player);
-		moonMap.addActor(goon2, 3, 8);
+		moonMap.addActor(new Goon("Goonity", player), 3, 8);
 		// Testing Implementation of Ninja
-		Ninja ninja2 = new Ninja("Rockinja", player);
-		moonMap.addActor(ninja2, 10, 3);
+		moonMap.addActor(new Ninja("Rockinja", player), 10, 3);
 		
 		// Testing Implementation of finalBoss
-		FinalBoss boss = new FinalBoss("Yugo Maxx", player);
-		moonMap.addActor(boss, 5, 5);
+		moonMap.addActor(new FinalBoss("Yugo Maxx", player), 5, 5);
 		
 		// Add launch pad to moonMap
-		LaunchPad lp2 = new LaunchPad(earthMap, 9, 10, "back to Earth", true);
-		moonMap.add(lp2, moonMap.at(9, 9));
+		moonMap.add(new LaunchPad(earthMap, 9, 10, "back to Earth", true), moonMap.at(9, 9));
 		// Add an invisible player only tile where the player will spawn at the destination
 		moonMap.add(new PlayerOnlyTile('.'), moonMap.at(9, 10));
 			
-			world.run();
+		world.run();
 	}
 }
