@@ -99,6 +99,7 @@ public class Application {
 		// Adding a lake/river to the game map
 		Lake earthLake = new Lake(earthMap, 19, 23, 7, 11);
 		earthLake.buildLake();
+		earthMap.addItem(new WaterPistol(), 1, 1);
 		
 		// Add enemies to moonMap
 		
@@ -111,7 +112,7 @@ public class Application {
 		moonMap.addActor(new Ninja("Rockinja", player), 10, 3);
 		
 		// Testing Implementation of finalBoss
-		moonMap.addActor(new FinalBoss("Yugo Maxx", player), 5, 5);
+		earthMap.addActor(new FinalBoss("Yugo Maxx", player), 7, 5);
 		
 		// Add launch pad to moonMap
 		moonMap.add(new LaunchPad(earthMap, 9, 10, "back to Earth", true), moonMap.at(9, 9));

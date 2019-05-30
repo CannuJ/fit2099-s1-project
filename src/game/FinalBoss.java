@@ -6,9 +6,11 @@ import java.util.List;
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Actor;
+import edu.monash.fit2099.engine.AttackAction;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.IntrinsicWeapon;
+import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.MoveActorAction;
 import edu.monash.fit2099.engine.SkipTurnAction;
 
@@ -22,10 +24,17 @@ public class FinalBoss extends Actor{
 		super(name, 'M', 5, 50);
 		this.hasExoskeleton = true;
 	}
-
-	private List<ActionFactory> actionFactories = new ArrayList<ActionFactory>();
-
-	private void addBehaviour(ActionFactory behaviour) {
+	
+	@Override
+	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
+		Actions actions = new Actions();
+		
+		if (WaterPistol.getWaterPistolFrom(otherActor) == null) {
+			actions.add(new AttackAction(this, otherActor)); // Player can still attempt to attack Yugo, they'll see that it doesn't do any damage
+		} else {
+			actions.add(new SquirtWaterAction(this)); // Player is able to break the boss' exoskeleton
+		}
+		return actions;
 	}
 
 	/**
@@ -57,10 +66,10 @@ public class FinalBoss extends Actor{
 	@Override
 	public void hurt(int points) {
 		if (!hasExoskeleton) {
-		hitPoints -= points;
+			hitPoints -= points;
 		}
 		else {
-			System.out.println("Yugo Maxx is still wearing his super suit!\nThe damage was mitigated!");
+//			System.out.println("Yugo Maxx is still wearing his super suit!\nThe damage was mitigated!"); may not be necessary -Alex
 		}
 	}
 	
@@ -68,6 +77,11 @@ public class FinalBoss extends Actor{
 	@Override
 	protected IntrinsicWeapon getIntrinsicWeapon() {
 		return new IntrinsicWeapon(10, "punches");
+	}
+	
+	public void shed() {
+		hasExoskeleton = false;
+		
 	}
 }
 
