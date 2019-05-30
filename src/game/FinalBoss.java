@@ -25,11 +25,13 @@ public class FinalBoss extends Actor{
 	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
 		Actions actions = new Actions();
 		
-		if (WaterPistol.getWaterPistolFrom(otherActor) == null || !hasExoskeleton()) {
-			actions.add(new AttackAction(otherActor, this)); // Player can still attempt to attack Yugo, they'll see that it doesn't do any damage
-		} else {
-			actions.add(new SquirtWaterAction(this)); // Player is able to break the boss' exoskeleton
+		WaterPistol pistol = WaterPistol.getWaterPistolFrom(otherActor);
+		if (!hasExoskeleton()) {
+			return new Actions(new AttackAction(otherActor, this));
+		} else if (pistol != null && pistol.hasWater()) {
+			return new Actions(new SquirtWaterAction(this)); // Player is able to break the boss' exoskeleton
 		}
+			
 		return actions;
 	}
 

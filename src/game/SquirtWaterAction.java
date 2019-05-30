@@ -30,7 +30,7 @@ public class SquirtWaterAction extends Action {
 
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor + " squirts " + target + "'s exoskeleton with a water pistol";
+		return actor + " squirts " + target + " with a water pistol";
 	}
 
 	@Override
