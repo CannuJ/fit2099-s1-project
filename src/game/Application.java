@@ -55,13 +55,17 @@ public class Application {
 		Actor player = new Player("Player", '@', 1, 100);
 		world.addPlayer(player, earthMap, 2, 2);
 		
+
+		
 		// Add enemies to earthMap
 		
 		// Testing Implementation of Grunt
 		earthMap.addActor(new Grunt("Mongo", player), 0, 0);
-		earthMap.addActor(new Grunt("Norbert", player),  10, 10);
+		Grunt keyHolderGrunt = new Grunt("Norbert", player);
+		earthMap.addActor(keyHolderGrunt,  10, 10);
 		// Testing Implementation of Goon
-		earthMap.addActor(new Goon("Gooney", player), 5, 5);
+		Goon keyHolderGoon = new Goon("Gooney", player);
+		earthMap.addActor(keyHolderGoon, 5, 5);
 		// Testing Implementation of Ninja
 		earthMap.addActor(new Ninja("Greninja", player), 10, 6);
 		// Testing Implementation of DrMaybe
@@ -83,16 +87,17 @@ public class Application {
 		earthMap.addItem(new SpaceSuit("Space Suit"), 15, 8);
 		earthMap.add(new OxygenDispenser('o'), earthMap.at(16, 8));
 		
-		// Testing Implementation of Door/Key
+		// Adding doors and keys to the map
 		Door plansDoor = new Door();
 		earthMap.add(plansDoor, earthMap.at(8, 3));
-		earthMap.addItem(plansDoor.createKey("Antique key"), 5, 6);
+		keyHolderGrunt.addItemToInventory(plansDoor.createInventoryKey("Antique key"));
 		// Testing Implementation of DrMaybe Door/Key
 		Door drMaybeDoor = new Door();
 		earthMap.add(drMaybeDoor, earthMap.at(15, 4));
-		earthMap.addItem(drMaybeDoor.createKey("Shiny key"), 5, 7);
+		keyHolderGoon.addItemToInventory(plansDoor.createInventoryKey("Shiny key"));
 		
-		Lake earthLake = new Lake(earthMap, 18, 20, 6, 9);
+		// Adding a lake/river to the game map
+		Lake earthLake = new Lake(earthMap, 19, 23, 7, 11);
 		earthLake.buildLake();
 		
 		// Add enemies to moonMap
