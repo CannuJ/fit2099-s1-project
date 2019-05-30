@@ -7,7 +7,6 @@ import edu.monash.fit2099.engine.AttackAction;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.IntrinsicWeapon;
-import edu.monash.fit2099.engine.MoveActorAction;
 import edu.monash.fit2099.engine.SkipTurnAction;
 
 public class FinalBoss extends Actor{
@@ -26,8 +25,8 @@ public class FinalBoss extends Actor{
 	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
 		Actions actions = new Actions();
 		
-		if (WaterPistol.getWaterPistolFrom(otherActor) == null) {
-			actions.add(new AttackAction(this, otherActor)); // Player can still attempt to attack Yugo, they'll see that it doesn't do any damage
+		if (WaterPistol.getWaterPistolFrom(otherActor) == null || !hasExoskeleton()) {
+			actions.add(new AttackAction(otherActor, this)); // Player can still attempt to attack Yugo, they'll see that it doesn't do any damage
 		} else {
 			actions.add(new SquirtWaterAction(this)); // Player is able to break the boss' exoskeleton
 		}
@@ -63,7 +62,7 @@ public class FinalBoss extends Actor{
 	@Override
 	public void hurt(int points) {
 		if (!hasExoskeleton()) {
-			hitPoints -= points;
+			hitPoints -= points; // Engine prints the wrong thing
 		}
 	}
 	

@@ -26,13 +26,17 @@ public class WaterPistol extends WeaponItem implements Weapon {
 	}
 	
 	public void fill() {
-		allowableActions.remove(fillAction);
-		filled = true;
+		if (!filled) {
+			allowableActions.remove(fillAction);
+			filled = true;
+		}
 	}
 	
 	public void empty() {
-		allowableActions.add(fillAction);
-		filled = false;
+		if (filled) {
+			allowableActions.add(fillAction);
+			filled = false;
+		}
 	}
 
 }
