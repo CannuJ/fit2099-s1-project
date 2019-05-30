@@ -44,7 +44,7 @@ public class Door extends Ground {
 	}
 	
 	/** Generates a key item, with the appropriate allowable actions to 
-	 * be placed into an Actor's inventory apon creation for the door
+	 * be placed into an Actor's inventory on creation for the door
 	 * This key can only lock/unlock this door
 	 * 
 	 * @param keyName
