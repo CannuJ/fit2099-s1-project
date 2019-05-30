@@ -1,8 +1,5 @@
 package game;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Actor;
@@ -10,19 +7,19 @@ import edu.monash.fit2099.engine.AttackAction;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.IntrinsicWeapon;
-import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.MoveActorAction;
 import edu.monash.fit2099.engine.SkipTurnAction;
 
 public class FinalBoss extends Actor{
 	
-	private boolean hasExoskeleton;
+	private boolean exoskeleton;
+	private static final char exoskeletonChar = 'M';
+	private static final char noExoskeletonChar = 'm';
 	
-	// finalBoss is TODO: invulernable (add exoskeleton), and is always represented with a M
 	// Priority higher for testing purposes (5->5)
 	public FinalBoss(String name, Actor player) {
-		super(name, 'M', 5, 50);
-		this.hasExoskeleton = true;
+		super(name, exoskeletonChar, 5, 50);
+		this.exoskeleton = true;
 	}
 	
 	@Override
@@ -51,7 +48,7 @@ public class FinalBoss extends Actor{
 	@Override
 	public Action playTurn(Actions actions, GameMap map, Display display) {
 		for (Action action : actions) {
-			if (!(action instanceof MoveActorAction || action instanceof SkipTurnAction)) {
+			if (!(action instanceof AttackAction || action instanceof SkipTurnAction)) {
 				actions.remove(action);
 			}
 		}
@@ -65,12 +62,13 @@ public class FinalBoss extends Actor{
 	 */
 	@Override
 	public void hurt(int points) {
-		if (!hasExoskeleton) {
+		if (!hasExoskeleton()) {
 			hitPoints -= points;
 		}
-		else {
-//			System.out.println("Yugo Maxx is still wearing his super suit!\nThe damage was mitigated!"); may not be necessary -Alex
-		}
+	}
+	
+	public boolean hasExoskeleton() {
+		return exoskeleton;
 	}
 	
 	// finalBoss deals double damage so override IntrinsicWeapon from 5->10
@@ -80,7 +78,8 @@ public class FinalBoss extends Actor{
 	}
 	
 	public void shed() {
-		hasExoskeleton = false;
+		exoskeleton = false;
+		displayChar = noExoskeletonChar;
 		
 	}
 }

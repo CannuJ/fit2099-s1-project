@@ -15,15 +15,22 @@ public class SquirtWaterAction extends Action {
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
+		
 		WaterPistol pistol = WaterPistol.getWaterPistolFrom(actor);
+		String description = menuDescription(actor);
+		
+		if (target.hasExoskeleton()) {
+			description += "\n" + target + "'s exoskeleton breaks!";
+			target.shed();
+		}
 		pistol.empty();
-		target.shed();
-		return menuDescription(actor) + "\n" + target + "'s exoskeleton breaks!";
+		
+		return description;
 	}
 
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor + " squirts " + target + " with a water pistol";
+		return actor + " squirts " + target + "'s exoskeleton with a water pistol";
 	}
 
 	@Override
