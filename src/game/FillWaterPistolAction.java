@@ -20,7 +20,7 @@ public class FillWaterPistolAction extends Action {
 
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor + " fills up a water pistol";
+		return actor + " fills up the water pistol";
 	}
 
 	@Override

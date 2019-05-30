@@ -19,7 +19,7 @@ public class SquirtWaterAction extends Action {
 		WaterPistol pistol = WaterPistol.getWaterPistolFrom(actor);
 		String description = menuDescription(actor);
 		
-		if (target.hasExoskeleton()) {
+		if (target.hasExoskeleton() && pistol.hasWater()) {
 			description += "\n" + target + "'s exoskeleton breaks!";
 			target.shed();
 		}

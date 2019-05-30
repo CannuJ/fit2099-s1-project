@@ -1,7 +1,11 @@
 package game;
 
+import edu.monash.fit2099.engine.Action;
+import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Actor;
+import edu.monash.fit2099.engine.AttackAction;
 import edu.monash.fit2099.engine.Item;
+import edu.monash.fit2099.engine.SkipTurnAction;
 import edu.monash.fit2099.engine.Weapon;
 import edu.monash.fit2099.engine.WeaponItem;
 
@@ -11,7 +15,8 @@ public class WaterPistol extends WeaponItem implements Weapon {
 	private FillWaterPistolAction fillAction;
 	
 	public WaterPistol() {
-		super("Water Pistol", '7', 0, "sqirts water at");
+		super("Water Pistol", '7', 0, "");
+		
 		fillAction = new FillWaterPistolAction(this);
 		empty();
 	}
@@ -37,6 +42,10 @@ public class WaterPistol extends WeaponItem implements Weapon {
 			allowableActions.add(fillAction);
 			filled = false;
 		}
+	}
+	
+	public boolean hasWater() {
+		return filled;
 	}
 
 }
