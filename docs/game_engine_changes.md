@@ -46,6 +46,19 @@ The current state of the `AttackAction` class is that everything from calculatin
 all handles in its `execute()` method, as it is a child of `Action`. In order to make AttackAction more flexible (and not to mention easier to read) I believe that
 the AttackAction class should be refactored in such a way that its child classes can easily override these methods to allow for more complex methods of attacking.
 (e.g. ranged attacks, poison damage, magic damage etc...)
+One way that `AttackAction.execute()` could be refactored is by splitting it into:
+```java
+protected int calculateDamage(Actor actor) // Returns an int, being the damage inflicted. Can be overriden if for example you would like weapon damaged to be ignored for some kind of shield
+public String execute(Actor actor, GameMap map) // Only prints the damage calculated above, then inflicts it on the actor
+```
+with
+```java
+public void kill() // see "Actor's Death" section
+```
+being in the `Actor` class which is automatically called whenever the actor's health goes below zero. (Discussed in the next section)
+It would also be nice if there were more comments/javadoc strings present in the `AttackAction` class.
+It could be argued that these changes would only increase the amount of tasks needed to be performed in Actor. However I believe that this trade-off allows for greater flexibility
+in inherited versions of `AttackAction` and would make the code cleaner and easier to read.
 ### Actor's Death
 On a similar topic to the Hitpoints section, the fact that death is exclusivly handled by the `AttackAction` class makes killing an actor *only* possible when another Actor "attacks" it
 seems to me like a major design flaw. The `AttackAction` class holds too much power in this regard. It is impossible for a tile (`Ground` object), `Action` or other class to directly
@@ -54,8 +67,6 @@ to die by other means. It is extremely common in games that the environment, or 
 - lava tiles
 - spikes on the ground
 - pitfalls
-- telefragging (having something teleport to your location kills you, would have been useful when the player goes to the moon in this game a la DOOM, Quake etc...)
-- fall damage
-the list goes on...
-
+- telefragging (having something teleport to your location kills you would have been useful when the player goes to the moon in this game a la DOOM, Quake etc...)
 If the action of dying was in `Actor`, killing an actor would be as simple as `actor.kill()`, not relying on calling `hurt(99999)` and waiting for another actor to finish it off. 
+`actor.kill()` could be inserted into the `hurt()` or `setHealth()` methods as described above, every time damage is inflicted it checks if `hitPoints <= 0` and if so, kills the actor.
