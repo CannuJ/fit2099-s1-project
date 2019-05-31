@@ -20,12 +20,13 @@ The `Player` will be the target of an `Enemy`, who's goal is to inflict damage o
 **Instances of 'Enemy'** <br>
 
 ### Grunt
+**Class:** `Grunt` inherits from `Actor`<br>
 A `Grunt` will follow the `Player` around and 'slap' them, inflicting damage.<br>
 
 This class will serve as the main class containing Goons, and Dr. Maybe.<br>
 
 ### Goon
-**Class:** `Goon` inherits from `Grunt`<br>
+**Class:** `Goon` inherits from `Actor`<br>
 Goons will follow the `Player` around and deal double the amount of damage inflicted by a `Grunt`.<br>
 
 There is also a 10% chance they will shout an insult at the `Player`.<br>
@@ -33,12 +34,13 @@ There is also a 10% chance they will shout an insult at the `Player`.<br>
 For the most part, this means that Grunts will act just as a `Grunt` except with the additions mentioned above.<br>
 
 ### Ninja
+**Class:** `Ninja` inherits from `Actor`<br>
 A `Ninja` works differently to other units in that is does no deal damage to the `Player` but rather inhibits movement through the use of stun powder.<br>
 
 The `Ninja` will not move unless it is within 5 squares of the `Player`, in which it will either move one space away from the `Player`, or attempt to stun them by throwing a Bag of Stun Powder.<br>
 
-### Miniboss: Doctor Maybe
-**Class:** `DrMaybe` inherits from `Grunt`<br>
+### MiniBoss: Doctor Maybe
+**Class:** `DrMaybe` inherits from `Actor`<br>
 Dr. Maybe has half the hit-points of a `Grunt` and deals half the damage of a `Grunt`.<br>
 
 Furthermore, Dr.Maybe does not move.<br>
@@ -46,11 +48,20 @@ Furthermore, Dr.Maybe does not move.<br>
 Located in a locked room, and will drop the **Rocket engine** (See below) upon being defeated. <br>
 
 ### Q (NPC)
+**Class:** `NPC` inherits from `Actor`<br>
 `Q`, unlike the rest of the actor subclasses mentioned above, is a friendly NPC.<br>
 
 `Q` will supply the `Player` with **Rocket body** in exchange for the **Rocket plans** (See below).<br>
 
 `Q` will randomly roam the map (TBD on implementation).<br>
+
+### FinalBoss: Yugo Maxx
+**Class:** `FinalBoss` inherits from `Actor`<br>
+FinalBoss has an exoskeleton, rendering them invulnerable and deals double the damage of a `Grunt`.<br>
+
+`FinalBoss` is located on the move and moves around freely.<br>
+
+Defeating `FinalBoss` will complete the game.
 
 ## Doors
 
@@ -87,7 +98,11 @@ Keys are:
 
 In order for keys to tie information about which door they are unlocking, they require to be their own subclass of `Item`.
 <br>
-## Places on the map
+## Places on the `earthMap`
+### Main
+This space is a 20x10 space containing walls, doors, several enemies, as well as `NPCQ` and `DrMaybe`.
+
+The premise here is to work your way around the `earthMap` collecting all 3 items required to build the `Rocket`, so that you can venture to the `moonMap` (see below) and defeat the `FinalBoss`, Yugo Maxx.
 
 ### Rocket Plan Room
 **Behind a locked `Door`**<br>
@@ -102,3 +117,7 @@ Inside this room is the `DrMaybe` miniboss. The player must fight Dr Maybe (not 
 ### Rocket Pad
 **Instance of `Location`** <br>
 The rocket pad is a `Location` placed inside a locked room (as described many times above) on which the rocket items will be placed upon to complete the game. The rocket pad will be one tile inside the room and therefore should be represented by a `Location` class.
+## Places on the `moonMap`
+
+### Main
+This space essentially mimics that of `earthMap`, containing several enemies and especially `FinalBoss`.
