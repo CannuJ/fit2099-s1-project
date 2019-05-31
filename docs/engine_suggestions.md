@@ -68,5 +68,6 @@ to die by other means. It is extremely common in games that the environment, or 
 - spikes on the ground
 - pitfalls
 - telefragging (having something teleport to your location kills you would have been useful when the player goes to the moon in this game a la DOOM, Quake etc...)
+<br />
 If the action of dying was in `Actor`, killing an actor would be as simple as `actor.kill()`, not relying on calling `hurt(99999)` and waiting for another actor to finish it off. 
 `actor.kill()` could be inserted into the `hurt()` or `setHealth()` methods as described above, every time damage is inflicted it checks if `hitPoints <= 0` and if so, kills the actor.
