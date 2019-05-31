@@ -57,9 +57,11 @@ Located in a locked room, and will drop the **Rocket engine** (See below) upon b
 
 ### FinalBoss: Yugo Maxx
 **Class:** `FinalBoss` inherits from `Actor`<br>
-FinalBoss has an exoskeleton, rendering them invulnerable and deals double the damage of a `Grunt`.<br>
+FinalBoss has an `exoskeleton`, rendering them invulnerable and deals double the damage of a `Grunt`.<br>
 
 `FinalBoss` is located on the move and moves around freely.<br>
+
+To damage `FinalBoss`, one must first destroy the `exoskeleton` by using the `waterPistol` on it.
 
 Defeating `FinalBoss` will complete the game.
 
@@ -97,6 +99,11 @@ Keys are:
 - not consumed when used
 
 In order for keys to tie information about which door they are unlocking, they require to be their own subclass of `Item`.
+
+### waterPistol
+**Class:** `waterPistol` inherits from `Item`
+
+Can be found on the `moonMap` and can be filled at the lake located on the `earthMap`.
 <br>
 ## Places on the `earthMap`
 ### Main
@@ -121,3 +128,5 @@ The rocket pad is a `Location` placed inside a locked room (as described many ti
 
 ### Main
 This space essentially mimics that of `earthMap`, containing several enemies and especially `FinalBoss`.
+
+The aim here is to defeat `FinalBoss` by first breaking his `exoskeleton` using the `waterPistol`, rendering the `FinalBoss` vulnerable to damage (invulnerable otherwise). We do this by having a 'stat' called `hasExoskeleton`, a boolean. While this is true, any damage inflicted on `FinalBoss` is mitigated.
