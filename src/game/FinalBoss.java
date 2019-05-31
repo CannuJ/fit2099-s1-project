@@ -48,6 +48,9 @@ public class FinalBoss extends Actor{
 	 */
 	@Override
 	public Action playTurn(Actions actions, GameMap map, Display display) {
+		if (hitPoints <= 0) {
+			new GameOver(true).show();
+		}
 		for (Action action : actions) {
 			if (!(action instanceof AttackAction || action instanceof SkipTurnAction)) {
 				actions.remove(action);
@@ -64,10 +67,14 @@ public class FinalBoss extends Actor{
 	@Override
 	public void hurt(int points) {
 		if (!hasExoskeleton()) {
-			hitPoints -= points; // Engine prints the wrong thing
+			hitPoints -= points; 
 		}
 	}
 	
+	/**
+	 * Returns whether the exoskeleton on the final boss has been destroyed or not
+	 * @return exoskeleton
+	 */
 	public boolean hasExoskeleton() {
 		return exoskeleton;
 	}
@@ -78,6 +85,9 @@ public class FinalBoss extends Actor{
 		return new IntrinsicWeapon(10, "punches");
 	}
 	
+	/**
+	 * Makes the final boss "shed" their exoskeleton, making them vulnerable
+	 */
 	public void shed() {
 		exoskeleton = false;
 		displayChar = noExoskeletonChar;
