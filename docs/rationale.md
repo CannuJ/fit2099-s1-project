@@ -7,8 +7,15 @@ _Team: JulianAndAlex_
 
 ## Actors
 
-**Class:** `Actor`<br>
-An `Actor` represents any character present in the world.
+### QuittablePlayer
+**Class:** `QuittablePlayer` inherits from `Player`<br>
+The only difference between this inherited version of `Player` and `Player` itself, is that every `QuittablePlayer`
+has the action of `QuitGameAction` appened to its list of actions at every point in the game, enabling it to quit directly from the menu.
+A `QuittablePlayer` is able to lose when its `hitPoints` reach 0 or lower, during the `hurt()` call a `GameOver` screen is shown via `GameOver().show()`
+
+#### QuitGameAction
+**Class:** `QuitGameAction` inherits from `Action`
+An action, when executed (`execute()`) quits the game via `System.exit(0)`. It's menu character is always `x`.
 
 ### Enemies
 
@@ -61,9 +68,9 @@ FinalBoss has an `exoskeleton`, rendering them invulnerable and deals double the
 
 `FinalBoss` is located on the move and moves around freely.<br>
 
-To damage `FinalBoss`, one must first destroy the `exoskeleton` by using the `waterPistol` on it.
+To damage `FinalBoss`, one must first destroy the `exoskeleton` by using the `WaterPistol` on it. When the boss has an exoskeleton and is holding a filled `WaterPistol`, the `FinalBoss` allows the action of `SquirtWaterAction` to destroy the skeleton. (See: `WaterPistol`)
 
-Defeating `FinalBoss` will complete the game.
+Defeating `FinalBoss` will complete the game. When the boss' `hitPoints` reach 0 or lower, an instance of `GameOver` (in its winning state) is created an executed (`show()`) 
 
 ## Doors
 
@@ -100,8 +107,12 @@ Keys are:
 
 In order for keys to tie information about which door they are unlocking, they require to be their own subclass of `Item`.
 
-### waterPistol
-**Class:** `waterPistol` inherits from `Item`
+### WaterPistol
+**Class:** `WaterPistol` inherits from `Item`
+The water pistol is a weapon which is used against Yugo Maxx and the end of the game to break down his exoskeleton and make him vulnerable to damage. The pistol itself is not a weapon, so it can not be used to attack anything else.
+
+The water pistol tracks whether it contains water or not using the private `filled` attribute. It can be refilled by going to a `Water` tile which files the pistol using `fill()`, given to the user as a `FillWaterPistolAction`. When the WaterPistol is full and the player is standing next to a Yugo Maxx with
+an exoskeleton, the `SquirtWaterAction` becomes available which removes Maxx's exoskeleton using `FinalBoss`'s `shed()` method which empties the pistol (`empty()`).
 
 Can be found on the `moonMap` and can be filled at the lake located on the `earthMap`.
 <br>
@@ -110,6 +121,11 @@ Can be found on the `moonMap` and can be filled at the lake located on the `eart
 This space is a 20x10 space containing walls, doors, several enemies, as well as `NPCQ` and `DrMaybe`.
 
 The premise here is to work your way around the `earthMap` collecting all 3 items required to build the `Rocket`, so that you can venture to the `moonMap` (see below) and defeat the `FinalBoss`, Yugo Maxx.
+### Lake
+**Class:** `Lake`
+The `Lake` class is used to build a square of `Water` tiles onto a given map via the `buildLake()` method.
+It is useful to the player as it is a source of water for the `WaterPistol`, a key item needed to finish the game.
+A lake is placed on the bottom right corner of `earthMap`.
 
 ### Rocket Plan Room
 **Behind a locked `Door`**<br>
@@ -130,3 +146,13 @@ The rocket pad is a `Location` placed inside a locked room (as described many ti
 This space essentially mimics that of `earthMap`, containing several enemies and especially `FinalBoss`.
 
 The aim here is to defeat `FinalBoss` by first breaking his `exoskeleton` using the `waterPistol`, rendering the `FinalBoss` vulnerable to damage (invulnerable otherwise). We do this by having a 'stat' called `hasExoskeleton`, a boolean. While this is true, any damage inflicted on `FinalBoss` is mitigated.
+
+## Other
+
+### GameOver
+**Class:** `GameOver`
+A class that represents a game over screen with pre-determined messages for winning and losing.
+To specify a win or a lose screen, a `boolean` being `true` for a win and `false` for a loss, can be passed into the constructor.
+A game over screen is displayed whenever a `QuittablePlayer` reaches 0 or less `hitPoints` (loss) or when Yugo Maxx reaches 0 or less `hitPoints` (win).
+A screen is displayed using public method `show()`
+A text screen is displayed depending on the outcome and the player is prompted to press enter to quit. After they press enter, the game terminates. 
