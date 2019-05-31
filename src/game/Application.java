@@ -17,8 +17,8 @@ public class Application {
 		World world = new World(new Display());
 
 		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall());
-		GameMap gameMap;
-
+		GameMap earthMap;
+		
 		List<String> map = Arrays.asList(
 				".......................",
 				"....#####....######....",
@@ -31,48 +31,92 @@ public class Application {
 				".......................",
 				".......................",
 				".......................");
-		gameMap = new GameMap(groundFactory, map);
-		world.addMap(gameMap);
+		earthMap = new GameMap(groundFactory, map);
+		world.addMap(earthMap);
 		
-		Actor player = new Player("Player", '@', 1, 100);
-		world.addPlayer(player, gameMap, 2, 2);
+		GameMap moonMap; // Initial moonMap
 		
-		Grunt grunt = new Grunt("Mongo", player);
-		gameMap.addActor(grunt, 0, 0);
-		Grunt grunt2 = new Grunt("Norbert", player);
-		gameMap.addActor(grunt2,  10, 10);
+		List<String> moon = Arrays.asList(
+				".......................",
+				".......................",
+				".......................",
+				".......................",
+				".......................",
+				".......................",
+				".......................",
+				".......................",
+				".......................",
+				".......................",
+				".......................");
+		moonMap = new GameMap(groundFactory, moon);
+		world.addMap(moonMap);
 		
-		Item rocketPlans = new Item("Rocket Plans", 'P');
-		gameMap.addItem(rocketPlans, 5, 2);
+		// Add player to earthMap
+		Actor player = new QuittablePlayer("Player", '@', 1, 100);
+		world.addPlayer(player, earthMap, 2, 2);
 		
-		LaunchPad lp = new LaunchPad();
-		gameMap.add(lp, gameMap.at(9, 9));
+
 		
-		NpcQ npcQ = new NpcQ(player);
-		gameMap.addActor(npcQ, 3, 3);
+		// Add enemies to earthMap
 		
+		// Implementation of Grunt
+		earthMap.addActor(new Grunt("Mongo", player), 0, 0);
+		Grunt keyHolderGrunt = new Grunt("Norbert", player);
+		earthMap.addActor(keyHolderGrunt,  10, 10);
+		// Implementation of Goon
+		Goon keyHolderGoon = new Goon("Gooney", player);
+		earthMap.addActor(keyHolderGoon, 5, 5);
+		// Implementation of Ninja
+		earthMap.addActor(new Ninja("Greninja", player), 10, 6);
+		// Implementation of DrMaybe
+		earthMap.addActor(new DrMaybe("DrMaybe", player), 17, 2);
+		
+		// Add NPCQ to earthMap
+		earthMap.addActor(new NpcQ(player), 3, 3);
+		
+		// Add items to earthMap
+		
+		// Implementation of Rocket Plans
+		earthMap.addItem(new Item("Rocket Plans", 'P'), 5, 2);
+		// Add launch pad to earthMap
+		earthMap.add(new LaunchPad(moonMap, 9, 10, "to the Moon"), earthMap.at(9, 9));
+		// Add an invisible player only tile where the player will spawn at the destination
+		earthMap.add(new PlayerOnlyTile('.'), earthMap.at(9, 10));
+		
+		// Implementation of SpaceSuit/OxygenTank
+		earthMap.addItem(new SpaceSuit("Space Suit"), 15, 8);
+		earthMap.add(new OxygenDispenser('o'), earthMap.at(16, 8));
+		
+		// Adding doors and keys to the map
 		Door plansDoor = new Door();
-		Key plansKey = plansDoor.createKey("Antique key");
-		gameMap.add(plansDoor, gameMap.at(8, 3));
-		gameMap.addItem(plansKey, 5, 6);
-		
+		earthMap.add(plansDoor, earthMap.at(8, 3));
+		keyHolderGrunt.addItemToInventory(plansDoor.createInventoryKey("Antique key"));
+		// Implementation of DrMaybe Door/Key
 		Door drMaybeDoor = new Door();
-		Key drMaybeKey = drMaybeDoor.createKey("Shiny key");
-		gameMap.add(drMaybeDoor, gameMap.at(15, 4));
-		gameMap.addItem(drMaybeKey, 5, 7);
+		earthMap.add(drMaybeDoor, earthMap.at(15, 4));
+		keyHolderGoon.addItemToInventory(plansDoor.createInventoryKey("Shiny key"));
+		// Adding a lake/river to the earth map
+		Lake earthLake = new Lake(earthMap, 19, 23, 7, 11);
+		earthLake.buildLake();
 		
-		// Testing Implementation of Goon
-		Goon goon = new Goon("Gooney", player);
-		gameMap.addActor(goon, 5, 5);
+		// Add enemies to moonMap
 		
-		// Testing Implementation of Ninja
-		Ninja ninja = new Ninja("Greninja", player);
-		gameMap.addActor(ninja, 10, 6);
-		
-		// Testing Implementation of DrMaybe
-		DrMaybe drMaybe = new DrMaybe("DrMaybe", player);
-		gameMap.addActor(drMaybe, 17, 2);
+		// Implementation of Grunt
+		moonMap.addActor(new Grunt("Moondo", player), 20, 0);
+		moonMap.addActor(new Grunt("Spacheep", player),  15, 7);
+		// Implementation of Goon
+		moonMap.addActor(new Goon("Goonity", player), 3, 8);
+		// Implementation of Ninja
+		moonMap.addActor(new Ninja("Rockinja", player), 10, 3);
+		//Implementation of finalBoss
+		moonMap.addActor(new FinalBoss("Yugo Maxx", player), 7, 5);
+		// Add launch pad to moonMap
+		moonMap.add(new LaunchPad(earthMap, 9, 10, "back to Earth", true), moonMap.at(9, 9));
+		// Add an invisible player only tile where the player will spawn at the destination
+		moonMap.add(new PlayerOnlyTile('.'), moonMap.at(9, 10));
+		// Add the water pistol
+		moonMap.addItem(new WaterPistol(), 10, 1);
 			
-			world.run();
+		world.run();
 	}
 }

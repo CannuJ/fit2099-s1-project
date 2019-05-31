@@ -2,7 +2,7 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
-public class NpcQ extends Actor implements Talkable{
+public class NpcQ extends Actor{
 	
 	/*
 	 * The Actor class that implements the in-game NPC named Q.
@@ -14,7 +14,6 @@ public class NpcQ extends Actor implements Talkable{
 	
 	private static final String speechNoPlans = "I can give you something that will help, but I’m going to need the plans.";
 	private static final String speechWithPlans = "Hand them over, I don’t have all day!";
-	private static final int maxTalkingDistance = 1;
 	
 	private Actor player;
 	
@@ -39,13 +38,13 @@ public class NpcQ extends Actor implements Talkable{
 	 * @param actor the Actor whose inventory will be searched for the Rocket Plans
 	 * @return true if the Actor has the Rocket Plans in their inventory false otherwise
 	 */
-	private static boolean actorHasPlans(Actor actor) {
+	private static Item getPlansFromActor(Actor actor) {
 		for (Item item : actor.getInventory()) {
 			if (item.toString().equals("Rocket Plans")) {
-				return true;
+				return item;
 			}
 		}
-		return false;
+		return null;
 	}
 	
 
@@ -62,7 +61,7 @@ public class NpcQ extends Actor implements Talkable{
 	 */
 	@Override
 	public Action playTurn(Actions actions, GameMap map, Display display) {
-		if (actorHasPlans(this)) {  // Checks if Q now holds the Rocket Plans (meaning the player has traded them for the body)
+		if (getPlansFromActor(this) != null) {  // Checks if Q now holds the Rocket Plans (meaning the player has traded them for the body)
 			actions.clear();
 			actions.add(new SuicideAction(this));
 		} else {
@@ -91,11 +90,12 @@ public class NpcQ extends Actor implements Talkable{
 		// Only players can interact with Q
 		if (otherActor instanceof Player) {
 			// SwapItemAction if the player has the rocket plans and Q is currently holding something
-			if (!inventory.isEmpty() && actorHasPlans(otherActor)) {
-				actions.add(new SwapItemAction(this, otherActor, inventory.get(0), otherActor.getInventory().get(0)));
+			Item otherActorsPlans = getPlansFromActor(otherActor);
+			if (!inventory.isEmpty() && otherActorsPlans != null) {
+				actions.add(new SwapItemAction(this, otherActor, inventory.get(0), otherActorsPlans));
 			}
-			// Talk action to players
-			actions.add(new TalkToAction(this));
+			// Speech action to player
+			actions.add(new TalkToAction(this, talk()));
 		}
 		return actions;
 	}
@@ -107,7 +107,7 @@ public class NpcQ extends Actor implements Talkable{
 	 * @return a String containing the appropriate line of dialogue to be said to the player outlined above
 	 */
 	public String talk() {
-		return (actorHasPlans(player)) ? speechWithPlans : speechNoPlans;
+		return (getPlansFromActor(player) == null) ? speechNoPlans : speechWithPlans;
 	}
 }
 

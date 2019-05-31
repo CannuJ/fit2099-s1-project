@@ -31,7 +31,8 @@ public class Door extends Ground {
 		this(true);
 	}
 	
-	/** generates a key for the door
+	/** Generates a key item for the door
+	 * This key can only lock/unlock this door
 	 * 
 	 * @param keyName
 	 * @return the key
@@ -39,6 +40,19 @@ public class Door extends Ground {
 	public Key createKey(String keyName) {
 		Key newKey = new Key(keyName);
 		keys.add(newKey);
+		return newKey;
+	}
+	
+	/** Generates a key item, with the appropriate allowable actions to 
+	 * be placed into an Actor's inventory on creation for the door
+	 * This key can only lock/unlock this door
+	 * 
+	 * @param keyName
+	 * @return the key
+	 */
+	public Key createInventoryKey(String keyName) {
+		Key newKey = createKey(keyName);
+		newKey.forInventory();
 		return newKey;
 	}
 	

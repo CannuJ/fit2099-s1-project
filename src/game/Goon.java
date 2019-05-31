@@ -30,6 +30,13 @@ public class Goon extends Actor{
 				return action;
 		}
 		
+		// Do not allow Goons to drop items while they are still alive
+		for (Action action : actions) {
+			if (action instanceof DropItemAction) {
+				actions.remove(action);
+			}
+		}
+		
 		return super.playTurn(actions,  map,  display);
 	}
 	

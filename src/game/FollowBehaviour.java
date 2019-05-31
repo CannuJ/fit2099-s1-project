@@ -16,13 +16,15 @@ public class FollowBehaviour implements ActionFactory {
 		Location here = map.locationOf(actor);
 		Location there = map.locationOf(target);
 
-		int currentDistance = distance(here, there);
-		for (Exit exit : here.getExits()) {
-			Location destination = exit.getDestination();
-			if (destination.canActorEnter(actor)) {
-				int newDistance = distance(destination, there);
-				if (newDistance < currentDistance) {
-					return new MoveActorAction(destination, exit.getName());
+		if (there != null) { // Fixed bug where game crashes when there's no-one to follow
+			int currentDistance = distance(here, there);
+			for (Exit exit : here.getExits()) {
+				Location destination = exit.getDestination();
+				if (destination.canActorEnter(actor)) {
+					int newDistance = distance(destination, there);
+					if (newDistance < currentDistance) {
+						return new MoveActorAction(destination, exit.getName());
+					}
 				}
 			}
 		}
