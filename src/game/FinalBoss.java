@@ -12,8 +12,8 @@ import edu.monash.fit2099.engine.SkipTurnAction;
 public class FinalBoss extends Actor{
 	
 	private boolean exoskeleton;
-	private static final char exoskeletonChar = 'M';
-	private static final char noExoskeletonChar = 'm';
+	private static final char exoskeletonChar = 'Y';
+	private static final char noExoskeletonChar = 'y';
 	
 	// Priority higher for testing purposes (5->5)
 	public FinalBoss(String name, Actor player) {

@@ -95,11 +95,9 @@ public class Application {
 		Door drMaybeDoor = new Door();
 		earthMap.add(drMaybeDoor, earthMap.at(15, 4));
 		keyHolderGoon.addItemToInventory(plansDoor.createInventoryKey("Shiny key"));
-		
-		// Adding a lake/river to the game map
+		// Adding a lake/river to the earth map
 		Lake earthLake = new Lake(earthMap, 19, 23, 7, 11);
 		earthLake.buildLake();
-		earthMap.addItem(new WaterPistol(), 1, 1);
 		
 		// Add enemies to moonMap
 		
@@ -110,14 +108,14 @@ public class Application {
 		moonMap.addActor(new Goon("Goonity", player), 3, 8);
 		// Testing Implementation of Ninja
 		moonMap.addActor(new Ninja("Rockinja", player), 10, 3);
-		
 		// Testing Implementation of finalBoss
-		earthMap.addActor(new FinalBoss("Yugo Maxx", player), 7, 5);
-		
+		moonMap.addActor(new FinalBoss("Yugo Maxx", player), 7, 5);
 		// Add launch pad to moonMap
 		moonMap.add(new LaunchPad(earthMap, 9, 10, "back to Earth", true), moonMap.at(9, 9));
 		// Add an invisible player only tile where the player will spawn at the destination
 		moonMap.add(new PlayerOnlyTile('.'), moonMap.at(9, 10));
+		// Add the water pistol
+		moonMap.addItem(new WaterPistol(), 10, 1);
 			
 		world.run();
 	}
